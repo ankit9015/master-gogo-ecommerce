@@ -1,0 +1,1 @@
+// In next PR here I will put the Header and footer component which is present in all page (home, products, cart, etc.)
