@@ -1,21 +1,20 @@
 import "./App.css";
 import Router from "./Router/router";
-import {Link} from "react-router-dom"
-
-
+import { Link } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import PageLayout from "./pages/PageLayout/PageLayout";
 
 function App() {
   return (
     <div className="App">
-      <div>Hello</div>
-      <Link to="Home">Home|| </Link>
-      <Link to="Products">Products || </Link>
-      <Link to="Wishlist">Wishlist || </Link>
-      <Link to="Cart">Cart|| </Link>
-      <Link to="Auth">Auth || </Link>
-      <Router />
+      <PageLayout>
+        <Router />
+      </PageLayout>
+      {/* <Header></Header>
+      
+      <Footer></Footer> */}
     </div>
-    
   );
 }
 

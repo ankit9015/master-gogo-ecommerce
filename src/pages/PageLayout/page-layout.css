@@ -1,0 +1,13 @@
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.page-layout__main {
+  flex: 1 2 auto;
+}
+
+.page-layout:last-child {
+  margin-top: auto;
+}
