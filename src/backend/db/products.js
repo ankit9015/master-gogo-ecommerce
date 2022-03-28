@@ -8,12 +8,13 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
+    name: "Men's Black Jacket",
+    categoryName: "men",
+    ratings: 4,
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
@@ -23,7 +24,7 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
@@ -33,7 +34,7 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
@@ -43,7 +44,7 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
@@ -53,7 +54,7 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
@@ -63,7 +64,7 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
@@ -73,7 +74,7 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
@@ -83,7 +84,7 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
@@ -93,7 +94,7 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
-    img: "",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
     _id: uuid(),
