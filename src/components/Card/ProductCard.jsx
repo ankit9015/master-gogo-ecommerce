@@ -4,24 +4,24 @@ import "./card.css";
 
 function ProductCard(props) {
   return (
-    <div class="card-vertical in-wishlist">
-      <CardImage src={props.img.src} alt={props.img.alt} />
-      <div class="badge-wishlist flex-row button">
-        <i class="fa fa-heart wishlist-icon" aria-hidden="true"></i>
+    <div className="card-vertical in-wishlist">
+      <CardImage src={props.product.img} alt={props.product.name} />
+      <div className="badge-wishlist flex-row button">
+        <i className="fa fa-heart wishlist-icon" aria-hidden="true"></i>
       </div>
-      <div class="card-body">
-        <h1 class="card-title">{props.name}</h1>
+      <div className="card-body">
+        <h1 className="card-title">{props.product.name}</h1>
 
-        <div class="card-description">
-          <div class="text-md">
-            {`Ratings: ${props.ratings}`}
-            <i class="rating-star fas fa-star"></i>
+        <div className="card-description">
+          <div className="text-md">
+            {`Ratings: ${props.product.ratings}`}
+            <i className="rating-star fas fa-star"></i>
           </div>
-          <span class="price-new text-lg font-extrabold">
-            {`Price: ₹${props.discountedPrice}`}{" "}
+          <span className="price-new text-lg font-extrabold">
+            {`Price: ₹${props.product.discountedPrice}`}{" "}
           </span>{" "}
-          <span class="text-lg font-light price-old font-light text-gray">{`₹${props.price}`}</span>
-          <div class="text-md">{`${props.discount}- off`}</div>
+          <span className="text-lg font-light price-old font-light text-gray">{`₹${props.product.price}`}</span>
+          <div className="text-md">{`${props.product.discount}- off`}</div>
         </div>
 
         <div className="flex-row flex-center">
@@ -30,7 +30,7 @@ function ProductCard(props) {
             link="../Login"
             info={
               <>
-                <i class="fas fa-shopping-cart"></i>
+                <i className="fas fa-shopping-cart"></i>
                 <span className="m-s text-md">Add to cart</span>
               </>
             }

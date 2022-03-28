@@ -12,14 +12,7 @@ export function DisplaySection() {
 
       <div class="product-card-container">
         {products.map((product) => (
-          <ProductCard
-            name={product.name}
-            discount={product.discount}
-            discountedPrice={product.discountedPrice}
-            price={product.price}
-            ratings={product.ratings}
-            img={{ src: product.img, alt: product.name }}
-          />
+          <ProductCard product={product} />
         ))}
       </div>
     </div>
