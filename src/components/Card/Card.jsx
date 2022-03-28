@@ -28,7 +28,9 @@ const Card = (props) => {
           alt={props.img.alt}
         />
 
-        {/* <CardImage src={props.img.src}
+        {/* this comment is for future PR, please ignore */}
+
+        {/* <CardImage src={props.img.src} 
           alt={props.img.alt}/> */}
         
         
@@ -46,6 +48,8 @@ const Card = (props) => {
     >
       {props.cardButton.info}
     </Link>}
+
+    {/* this comment is for future PR, please ignore */}
     {/* <CardButton link={props.cardButton.link} info={props.cardButton.info} variant={props.cardButton.variant}/> */}
 
         </div>
@@ -61,19 +65,13 @@ const CardImage = (props) => {
 
 const CardBody = (props) => {
   return (
-    <div>
-      <div class="card-vertical text-overlay-container product-category card-shadow">
-        <div class="card-body">
-          <img
-            class="card-img"
-            src="./images/unisex.png"
-            alt="unisex-category"
-          />
-        </div>
-        <div class="gray-tile"></div>
-        <div class="text-overlay">UNISEX</div>
-      </div>
-    </div>
+    
+      <div className="card-body">
+            {props.title && <h3 className="card-title">{props.title}</h3>}
+            {props.subtitle && <h6 className="card-title-sub ">{props.subtitle}</h6>}
+            {props.description && <p className="card-description">{props.description}</p>}
+            </div>
+
   );
 };
 
