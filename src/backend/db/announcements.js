@@ -10,16 +10,19 @@ import unisex from "../../images/categories/unisex.png";
  * You can add category of your wish with different attributes
  * */
 
-export const categories = [
+export const newStocks = [
   {
     _id: uuid(),
+    stockType: "summer collection",
     categoryName: "men",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
-    img: men
+    "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    img: men,
   },
   {
     _id: uuid(),
+    stockType: "summer collection",
+
     categoryName: "women",
     description:
       "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
@@ -27,6 +30,7 @@ export const categories = [
   },
   {
     _id: uuid(),
+    stockType: "summer collection",
     categoryName: "boys",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
@@ -34,12 +38,14 @@ export const categories = [
     },
   {
     _id: uuid(),
+    stockType: "summer collection",
     categoryName: "girls",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
       img: girls},
   {
     _id: uuid(),
+    stockType: "summer collection",
     categoryName: "unisex",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
