@@ -1,18 +1,23 @@
-import React from "react";
-import { products } from "../../backend/db/products";
+import axios from "axios";
+import { React, useEffect } from "react";
+
 import ProductCard from "../../components/Card/ProductCard";
+import { useProductContext } from "../../context/product-context/ProductContext/ProductContext";
 
 export function DisplaySection() {
+  const { products } = useProductContext();
+
   return (
     <div className="product-display-section">
-      <h2 class="H2 font-bold line-height-lg">
+      <h2 className="H2 font-bold line-height-lg">
         Showing All Products{" "}
-        <span class="text-md m-s">(Showing 20 Products)</span>
+        <span className="text-md m-s">{`(Showing ${products.length} products) `}</span>
       </h2>
 
-      <div class="product-card-container">
+      <div className="product-card-container">
         {products.map((product) => (
           <ProductCard
+            key={product._id}
             name={product.name}
             discount={product.discount}
             discountedPrice={product.discountedPrice}

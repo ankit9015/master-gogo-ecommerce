@@ -1,90 +1,171 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
+import { useProductContext } from "../../context/product-context/ProductContext/ProductContext";
+
+const ratings = [
+  { numStars: "5", ratingName: "5 stars" },
+  { numStars: "4", ratingName: "4 stars and above" },
+  { numStars: "3", ratingName: "3 stars and above" },
+  { numStars: "2", ratingName: "2 stars and above" },
+  { numStars: "1", ratingName: "1 star and above" },
+];
 
 export function SideBar() {
+  const [categories, setCategories] = useState([]);
+  const { productState, productDispatch } = useProductContext();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get("/api/categories");
+        const categoriesList = response.data.categories;
+        setCategories((prev) => [...prev, ...categoriesList]);
+        // setLoading(false);
+      } catch (err) {
+        alert(err);
+      }
+    })();
+  }, []);
+
+  const filterHandler = () => {};
+
   return (
     <div className="filter-column flex-column">
-      <div class="flex-row  main-space-between">
-        <button className="text-md m-m small-button button button-secondary">
-          Filter
-        </button>
-        <button className="text-md m-m small-button button button-outline-secondary">
-          Clear
-        </button>
-      </div>
+      <h1 className="text-bold">Filters</h1>
+      <button
+        className="text-md m-m small-button button button-outline-secondary"
+        onClick={() => productDispatch({ type: "CLEAR-FILTER" })}
+      >
+        Clear
+      </button>
 
       <div>
-        <h2 class="text-lg font-bold">Price</h2>
-        <div class="text-md price-filter-container flex-row">
-          <span class="price-filter-min text-gray text-lg">50</span>
-          <input
-            type="range"
-            name="price-filter"
-            id="price-filter"
-            min="50"
-            max="200"
-          />
-          <span class="price-filter-max text-gray text-lg">200</span>
-        </div>
-      </div>
-
-      <div>
-        <h2 class="text-lg font-bold">Category</h2>
-        <div class="category-filter text-md">
-          <div>
-            <input type="checkbox" name="category-filter" id="men-filter" />
-            <label for="men-filter">Men</label>
-          </div>
-          <div>
-            <input type="checkbox" name="category-filter" id="women-filter" />
-            <label for="women-filter">Women</label>
-          </div>
-          <div>
+        <h2 className="text-md font-bold">Price</h2>
+        <div className="m-m flex-column">
+          <div className="text-md price-filter-container flex-row flex-center">
+            <span>Min: </span>
+            <span className="price-filter-min">0</span>
             <input
-              type="checkbox"
-              name="category-filter"
-              id="Kids-boy-filter"
+              type="range"
+              name="price-filter"
+              id="price-filter"
+              min="0"
+              max="5000"
+              defaultValue={productState.price.min}
+              step="1000"
+              onChange={(e) =>
+                productDispatch({
+                  type: "FILTER-PRICE",
+                  payload: { name: "min", value: e.target.value },
+                })
+              }
             />
-            <label for="Kids-boy-filter">Boys</label>
+            <span className="price-filter-max">5000</span>
           </div>
-          <div>
+          <div className="text-md price-filter-container flex-row flex-center">
+            <span>Max: </span>
+            <span className="price-filter-min">0</span>
             <input
-              type="checkbox"
-              name="category-filter"
-              id="Kids-girl-filter"
+              type="range"
+              name="price-filter"
+              id="price-filter"
+              min="0"
+              max="5000"
+              defaultValue={productState.price.max}
+              step="1000"
+              onChange={(e) => {
+                productDispatch({
+                  type: "FILTER-PRICE",
+                  payload: { name: "max", value: e.target.value },
+                });
+              }}
             />
-            <label for="Kids-girl-filter">Girls</label>
+            <span className="price-filter-max">5000</span>
           </div>
         </div>
       </div>
 
       <div>
-        <h2 class="text-lg font-bold">Rating</h2>
-        <div>
-          <input type="radio" name="rating-filter" id="equal-and-above-4" />
-          <label for="equal-and-above-4">4 stars and above</label>
+        <h2 className="text-md font-bold">Category</h2>
+        <div className="category-filter m-m text-md flex-column">
+          {categories.map(({ _id, categoryName }) => {
+            return (
+              <label key={_id}>
+                <input
+                  type="checkbox"
+                  name="category-filter"
+                  checked={productState.categories[categoryName]}
+                  onChange={() =>
+                    productDispatch({
+                      type: "FILTER-CATEGORIES",
+                      payload: { category: categoryName },
+                    })
+                  }
+                />
+                {categoryName.toUpperCase()}
+              </label>
+            );
+          })}
         </div>
-        <div>
-          <input type="radio" name="rating-filter" id="equal-and-above-3" />
-          <label for="equal-and-above-3">3 stars and above</label>
-        </div>
-        <div>
-          <input type="radio" name="rating-filter" id="equal-and-above-2" />
-          <label for="equal-and-above-2">2 stars and above</label>
-        </div>
-        <div>
-          <input type="radio" name="rating-filter" id="equal-and-above-1" />
-          <label for="equal-and-above-1">1 stars and above</label>
+      </div>
+
+      <div>
+        <h2 className="text-md font-bold">Rating</h2>
+        <div className="ratings-filter m-m text-md flex-column">
+          {ratings.map(({ numStars, ratingName }) => {
+            return (
+              <label key={numStars}>
+                <input
+                  type="radio"
+                  name="ratings-filter"
+                  checked={productState.ratings === numStars}
+                  onChange={() =>
+                    productDispatch({
+                      type: "FILTER-RATINGS",
+                      payload: { ratings: numStars },
+                    })
+                  }
+                />
+                {ratingName}
+              </label>
+            );
+          })}
         </div>
       </div>
       <div>
-        <h2 class="text-lg font-bold">Sort by</h2>
-        <div>
-          <input type="radio" name="rating-filter" id="price-low-to-high" />
-          <label for="price-low-to-high">Price-low to high</label>
-        </div>
-        <div>
-          <input type="radio" name="rating-filter" id="price-high-to-low" />
-          <label for="price-high-to-low">Price-high to low</label>
+        <h2 className="text-md font-bold">Sort by</h2>
+        <div className="sort-by-price flex-column m-m text-md">
+          <h6 className="text-md">By Price:</h6>
+          <label>
+            <input
+              type="radio"
+              name="sort-by-price"
+              value="LOWEST-FIRST"
+              checked={productState.sort.order === "LOWEST-FIRST"}
+              onChange={() =>
+                productDispatch({
+                  type: "SORT-PRODUCTS",
+                  payload: { sortBy: "price", order: "LOWEST-FIRST" },
+                })
+              }
+            />
+            Lowest first
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="sort-by-price"
+              value="HIGHEST-FIRST"
+              checked={productState.sort.order === "HIGHEST-FIRST"}
+              onChange={() =>
+                productDispatch({
+                  type: "SORT-PRODUCTS",
+                  payload: { sortBy: "price", order: "HIGHEST-FIRST" },
+                })
+              }
+            />
+            Highest first
+          </label>
         </div>
       </div>
     </div>

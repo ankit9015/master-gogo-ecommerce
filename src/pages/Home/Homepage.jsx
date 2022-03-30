@@ -8,9 +8,10 @@ const Home = () => {
   return (
     <div>
       {/* ------------------------------------------------------categoy ribbon starts */}
-      <div class="ribbon flex-row">
+      <div className="ribbon flex-row">
         {categories.map((item) => (
           <Card
+            key={item._id}
             variant="vertical"
             className="product-category m-s p-m"
             img={{ src: item.img, alt: item.categoryName }}
@@ -21,15 +22,16 @@ const Home = () => {
       {/* -----------------------------------------------------------category ribbon ends */}
 
       {/* ---------------------------------------------------------------main shelf starts */}
-      <div class="main-shelf">
+      <div className="main-shelf">
         <h1 className="H1 p-l">Some products will be displayed here</h1>
       </div>
       {/* ------------------------------------------------------------------main shelf ends */}
 
       {/* ------------------------------------------------------------------announcement ribbon starts */}
-      <div class="announcement ribbon flex-row">
+      <div className="announcement ribbon flex-row">
         {newStocks.map((item) => (
           <Card
+            key={item._id}
             variant="horizontal"
             className="new-arrivals"
             img={{
