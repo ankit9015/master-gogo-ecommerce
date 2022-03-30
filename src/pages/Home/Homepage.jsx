@@ -2,21 +2,35 @@ import { categories } from "../../backend/db/categories";
 import { newStocks } from "../../backend/db/announcements";
 import Card from "../../components/Card/Card";
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../Router/router";
+import { useProductContext } from "../../context/ProductContext/ProductContext";
 
 const Home = () => {
+  const { productDispatch } = useProductContext();
+
   return (
     <div>
       {/* ------------------------------------------------------categoy ribbon starts */}
       <div className="ribbon flex-row">
         {categories.map((item) => (
-          <Card
-            key={item._id}
-            variant="vertical"
-            className="product-category m-s p-m"
-            img={{ src: item.img, alt: item.categoryName }}
-            overlayText={item.categoryName}
-          />
+          <Link
+            to="../Products"
+            onClick={() =>
+              productDispatch({
+                type: "FILTER-CATEGORIES",
+                payload: { category: item.categoryName },
+              })
+            }
+          >
+            <Card
+              key={item._id}
+              variant="vertical"
+              className="product-category m-s p-m"
+              img={{ src: item.img, alt: item.categoryName }}
+              overlayText={item.categoryName}
+            />
+          </Link>
         ))}
       </div>
       {/* -----------------------------------------------------------category ribbon ends */}

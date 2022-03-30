@@ -2,7 +2,7 @@ import axios from "axios";
 import { React, useEffect } from "react";
 
 import ProductCard from "../../components/Card/ProductCard";
-import { useProductContext } from "../../context/product-context/ProductContext/ProductContext";
+import { useProductContext } from "../../context/ProductContext/ProductContext";
 
 export function DisplaySection() {
   const { products } = useProductContext();

@@ -12,7 +12,7 @@ import {
   filterRatings,
   filterCategories,
   sortProducts,
-} from "../../../utils/product-filter";
+} from "../../utils/product-filter";
 
 import axios from "axios";
 

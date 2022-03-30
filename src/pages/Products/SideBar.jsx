@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { useProductContext } from "../../context/product-context/ProductContext/ProductContext";
+import { useProductContext } from "../../context/ProductContext/ProductContext";
 
 const ratings = [
   { numStars: "5", ratingName: "5 stars" },

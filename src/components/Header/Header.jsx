@@ -1,20 +1,41 @@
 import { Link } from "react-router-dom";
+import { useProductContext } from "../../context/ProductContext/ProductContext";
 
 const Header = () => {
+  const { productDispatch } = useProductContext();
+
   return (
     <nav className="header navbar-container">
       {/* -- ----------------------- NavBar left start --------------- */}
-      <div className="navbar-left">
+      <div className="navbar-left flex-row">
         <div className="hamburger-icon nav-icon-badge">
           <i className="fa-solid fa-bars" aria-hidden="true"></i>
         </div>
         <div className="nav-logo">
-          <Link to="Home">
+          <Link
+            to="Home"
+            onClick={() =>
+              productDispatch({
+                type: "CLEAR-FILTER",
+              })
+            }
+          >
             <img src="./logo-ecom.png" alt="logo" />
           </Link>
         </div>
         <Link to="Mockapi">
           <span>Mockman</span>
+        </Link>
+        <Link
+          to="Products"
+          className="m-m"
+          onClick={() =>
+            productDispatch({
+              type: "CLEAR-FILTER",
+            })
+          }
+        >
+          <span>Products</span>
         </Link>
       </div>
 
