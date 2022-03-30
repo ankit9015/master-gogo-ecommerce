@@ -1,6 +1,15 @@
-const Products = () => {
+import React from "react";
+import { CardImage, CardButton } from "../../components/Card/Card";
+import { SideBar } from "./SideBar";
+import { DisplaySection } from "./DisplaySection";
 
-    return <h1>Products</h1>;
+function Products() {
+  return (
+    <div className="flex-row product-page-main">
+      <SideBar />
+      <DisplaySection />
+    </div>
+  );
 }
 
 export default Products;

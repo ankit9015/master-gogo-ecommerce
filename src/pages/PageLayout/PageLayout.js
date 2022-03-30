@@ -6,7 +6,7 @@ const PageLayout = ({ children }) => {
   return (
     <div className="page-layout">
       <Header></Header>
-      <div className="page-layout__main text-center">{children}</div>
+      <div className="page-layout__main">{children}</div>
 
       <Footer></Footer>
     </div>
