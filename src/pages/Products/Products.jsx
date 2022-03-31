@@ -1,5 +1,6 @@
-import React from "react";
-import { CardImage, CardButton } from "../../components/Card/Card";
+import { React, useReducer, useState, useEffect } from "react";
+import "./products.css";
+
 import { SideBar } from "./SideBar";
 import { DisplaySection } from "./DisplaySection";
 

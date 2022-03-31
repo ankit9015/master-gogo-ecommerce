@@ -1,10 +1,5 @@
 import { v4 as uuid } from "uuid";
 
-/**
- * Product Database can be added here.
- * You can add products of your wish with different attributes
- * */
-
 export const products = [
   {
     _id: uuid(),
@@ -134,7 +129,7 @@ export const products = [
     categoryName: "men",
     ratings: 4,
     price: "5000",
-    discountedPrice: "4000",
+    discountedPrice: "2000",
     discount: "20%",
     inCart: false,
     inWishList: false,
@@ -146,7 +141,7 @@ export const products = [
     categoryName: "men",
     ratings: 4,
     price: "5000",
-    discountedPrice: "4000",
+    discountedPrice: "400",
     discount: "20%",
     inCart: false,
     inWishList: false,
@@ -158,7 +153,7 @@ export const products = [
     categoryName: "men",
     ratings: 4,
     price: "5000",
-    discountedPrice: "4000",
+    discountedPrice: "1000",
     discount: "20%",
     inCart: false,
     inWishList: false,
@@ -167,10 +162,10 @@ export const products = [
   {
     _id: uuid(),
     name: "Men's Black Jacket",
-    categoryName: "men",
+    categoryName: "boys",
     ratings: 4,
     price: "5000",
-    discountedPrice: "4000",
+    discountedPrice: "5000",
     discount: "20%",
     inCart: false,
     inWishList: false,
@@ -179,7 +174,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Men's Black Jacket",
-    categoryName: "men",
+    categoryName: "girls",
     ratings: 4,
     price: "5000",
     discountedPrice: "4000",
