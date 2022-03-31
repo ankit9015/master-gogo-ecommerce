@@ -14,6 +14,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -24,6 +26,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -34,6 +38,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -44,6 +50,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -54,6 +62,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -64,6 +74,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -74,6 +86,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -84,6 +98,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -94,6 +110,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "https://picsum.photos/id/1/200/300",
   },
   {
@@ -104,6 +122,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
   // -------------------------------------------------------------------
@@ -116,6 +136,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
   {
@@ -126,6 +148,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
   {
@@ -136,6 +160,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
   {
@@ -146,6 +172,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
   {
@@ -156,6 +184,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
   {
@@ -166,6 +196,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
   {
@@ -176,6 +208,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
   {
@@ -186,6 +220,8 @@ export const products = [
     price: "5000",
     discountedPrice: "4000",
     discount: "20%",
+    inCart: false,
+    inWishList: false,
     img: "",
   },
 ];

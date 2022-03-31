@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./card.css";
 
 const CardButton = (props) => {
   return (
@@ -13,7 +14,7 @@ const CardButton = (props) => {
 };
 
 const CardImage = (props) => {
-  return <img className="card-img" src={props.src} alt={props.alt} />;
+  return <img className="card-img m-s" src={props.src} alt={props.alt} />;
 };
 
 const Card = (props) => {
