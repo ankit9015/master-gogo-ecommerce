@@ -6,6 +6,7 @@ import Wishlist from "../pages/Wishlist/Wishlist";
 import Cart from "../pages/Cart/Cart";
 import Auth from "../pages/Auth/Auth";
 import Login from "../pages/Auth/Login/Login";
+import MockAPI from "../pages/mockman/mockapi";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
       <Route path="/cart" element={<Cart />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/mockapi" element={<MockAPI />} />
     </Routes>
   );
 };

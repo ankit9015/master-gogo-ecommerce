@@ -5,23 +5,23 @@ import "./card.css";
 function ProductCard(props) {
   return (
     <div className="card-vertical in-wishlist">
-      <CardImage src={props.product.img} alt={props.product.name} />
+      <CardImage src={props.img.src} alt={props.img.alt} />
       <div className="badge-wishlist flex-row button">
         <i className="fa fa-heart wishlist-icon" aria-hidden="true"></i>
       </div>
       <div className="card-body">
-        <h1 className="card-title">{props.product.name}</h1>
+        <h1 className="card-title">{props.name}</h1>
 
         <div className="card-description">
           <div className="text-md">
-            {`Ratings: ${props.product.ratings}`}
+            {`Ratings: ${props.ratings}`}
             <i className="rating-star fas fa-star"></i>
           </div>
           <span className="price-new text-lg font-extrabold">
-            {`Price: ₹${props.product.discountedPrice}`}{" "}
+            {`Price: ₹${props.discountedPrice}`}{" "}
           </span>{" "}
-          <span className="text-lg font-light price-old font-light text-gray">{`₹${props.product.price}`}</span>
-          <div className="text-md">{`${props.product.discount}- off`}</div>
+          <span className="text-lg font-light price-old font-light text-gray">{`₹${props.price}`}</span>
+          <div className="text-md">{`${props.discount}- off`}</div>
         </div>
 
         <div className="flex-row flex-center">
