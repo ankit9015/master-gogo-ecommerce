@@ -15,17 +15,18 @@ export function DisplaySection() {
       </h2>
 
       <div className="product-card-container">
-        {products.map((product) => (
-          <ProductCard
-            key={product._id}
-            name={product.name}
-            discount={product.discount}
-            discountedPrice={product.discountedPrice}
-            price={product.price}
-            ratings={product.ratings}
-            img={{ src: product.img, alt: product.name }}
-          />
-        ))}
+        {products &&
+          products.map((product) => (
+            <ProductCard
+              key={product._id}
+              name={product.name}
+              discount={product.discount}
+              discountedPrice={product.discountedPrice}
+              price={product.price}
+              ratings={product.ratings}
+              img={{ src: product.img, alt: product.name }}
+            />
+          ))}
       </div>
     </div>
   );

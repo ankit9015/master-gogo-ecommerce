@@ -11,9 +11,6 @@ function App() {
           <Router />
         </PageLayout>
       </ProductProvider>
-      {/* <Header></Header>
-      
-      <Footer></Footer> */}
     </div>
   );
 }

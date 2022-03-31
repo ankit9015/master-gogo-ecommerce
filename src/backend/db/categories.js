@@ -5,43 +5,40 @@ import boys from "../../images/categories/boys.png";
 import girls from "../../images/categories/girls.png";
 import unisex from "../../images/categories/unisex.png";
 
-/**
- * Category Database can be added here.
- * You can add category of your wish with different attributes
- * */
-
 export const categories = [
   {
     _id: uuid(),
     categoryName: "men",
     description:
       "literature in the form of prose, especially novels, that describes imaginary events and people",
-    img: men
+    img: men,
   },
   {
     _id: uuid(),
     categoryName: "women",
     description:
       "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
-      img: women
+    img: women,
   },
   {
     _id: uuid(),
     categoryName: "boys",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-      img: boys
-    },
+    img: boys,
+  },
   {
     _id: uuid(),
     categoryName: "girls",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-      img: girls},
+    img: girls,
+  },
   {
     _id: uuid(),
     categoryName: "unisex",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-      img: unisex},
+    img: unisex,
+  },
 ];
