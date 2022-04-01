@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
+import { useWishlist } from "../../context/WishlistContext/WishListContext";
 
 const Header = () => {
   const { productDispatch } = useProductContext();
+  const { wishListState } = useWishlist();
 
   return (
     <nav className="header navbar-container">
@@ -68,7 +70,9 @@ const Header = () => {
           <Link to="Wishlist" className="nav-icon-link">
             <span className="badge nav-icon-badge">
               <i className="fa fa-heart" aria-hidden="true"></i>
-              <span className="badge-count">0</span>
+              {wishListState.itemTotal > 0 && (
+                <span className="badge-count">{wishListState.itemTotal}</span>
+              )}
             </span>
             <span className="nav-icon-text">Wishlist</span>
           </Link>

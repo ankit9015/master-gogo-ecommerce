@@ -1,8 +1,10 @@
 import React from "react";
+import { useWishlist } from "../../context/WishlistContext/WishListContext";
 import { CardImage, CardButton } from "./Card";
 import "./card.css";
 
 function ProductCard(props) {
+  const { wishListState } = useWishlist();
   return (
     <div className="card-vertical in-wishlist">
       <CardImage src={props.img.src} alt={props.img.alt} />
