@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
 
-const Header = () => {
+const Header = ({ loginInfo }) => {
   const { productDispatch } = useProductContext();
+  const { isLogin, setIsLogin } = loginInfo;
 
   return (
     <nav className="header navbar-container">
@@ -59,12 +60,25 @@ const Header = () => {
 
       <div className="right-navbar">
         <div className="nav-icons list-style-none ">
-          <Link to="Login" className="nav-icon-link">
-            <span className="badge nav-icon-badge">
-              <i className="fa fa-user" aria-hidden="true"></i>
-            </span>
-            <span className="nav-icon-text">Login</span>
-          </Link>
+          {islogin ? (
+            <Link
+              to="Login"
+              className="nav-icon-link"
+              onClick={() => setIsLogin(false)}
+            >
+              <span className="badge nav-icon-badge">
+                <i className="fa fa-user" aria-hidden="true"></i>
+              </span>
+              <span className="nav-icon-text">Logout</span>
+            </Link>
+          ) : (
+            <Link to="Login" className="nav-icon-link">
+              <span className="badge nav-icon-badge">
+                <i className="fa fa-user" aria-hidden="true"></i>
+              </span>
+              <span className="nav-icon-text">Login</span>
+            </Link>
+          )}
           <Link to="Wishlist" className="nav-icon-link">
             <span className="badge nav-icon-badge">
               <i className="fa fa-heart" aria-hidden="true"></i>

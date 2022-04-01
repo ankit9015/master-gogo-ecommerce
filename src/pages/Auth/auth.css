@@ -1,0 +1,15 @@
+.password-show {
+  /* flex: 0 2 auto; */
+  align-self: end;
+  margin-left: auto;
+  z-index: 99;
+}
+
+.password-input {
+  flex: 99 1 auto;
+  width: 100%;
+}
+
+/* .input-border {
+  border: 2px solid black;
+} */
