@@ -1,14 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./card.css";
 
 const CardButton = (props) => {
-  return (
+  return props.link ? (
     <Link
       to={props.link}
       className={`button card-btn link-btn text-center ${props.variant}`}
     >
       <span>{props.info}</span>
     </Link>
+  ) : (
+    <button
+      className={`button card-btn text-center ${props.variant}`}
+      onClick={props.onClick}
+    >
+      {props.info}
+    </button>
   );
 };
 
