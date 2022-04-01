@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
-import { useWishlist } from "../../context/WishlistContext/WishListContext";
+import { useWishlist } from "../../context/WishlistContext/WishlistContext";
 import { useCart } from "../../context/CartContext/CartContext";
 
 const Header = () => {
   const { productDispatch } = useProductContext();
   const { cartState } = useCart();
-  const { wishListState } = useWishlist();
+  const { wishlistState } = useWishlist();
 
   return (
     <nav className="header navbar-container">
@@ -72,8 +72,8 @@ const Header = () => {
           <Link to="Wishlist" className="nav-icon-link">
             <span className="badge nav-icon-badge">
               <i className="fa fa-heart" aria-hidden="true"></i>
-              {wishListState.itemTotal > 0 && (
-                <span className="badge-count">{wishListState.itemTotal}</span>
+              {wishlistState.itemTotal > 0 && (
+                <span className="badge-count">{wishlistState.itemTotal}</span>
               )}
             </span>
             <span className="nav-icon-text">Wishlist</span>

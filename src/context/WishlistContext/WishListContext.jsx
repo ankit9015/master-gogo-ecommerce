@@ -7,7 +7,7 @@ const defaultState = {
   wishlist: [],
 };
 
-const findWishlistItem = (state, product) => {
+const findItem = (state, product) => {
   return state.wishlist.find((item) => item.id === product.id);
 };
 
@@ -18,7 +18,7 @@ const wishlistReducer = (state, action) => {
   switch (type) {
     case "ADD-ITEM":
       console.log("inside");
-      return findWishlistItem(state, product)
+      return findItem(state, product)
         ? state
         : {
             ...state,
@@ -27,7 +27,7 @@ const wishlistReducer = (state, action) => {
           };
 
     case "REMOVE-ITEM":
-      return findWishlistItem(state, product)
+      return findItem(state, product)
         ? {
             ...state,
             itemTotal: state.itemTotal - 1,

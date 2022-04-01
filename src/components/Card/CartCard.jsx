@@ -1,11 +1,13 @@
 import { React, useState } from "react";
 import { useCart } from "../../context/CartContext/CartContext";
+import { useWishlist } from "../../context/WishlistContext/WishlistContext";
 import { CardImage, CardButton } from "./Card";
 import "./card.css";
 
 const CartCard = (props) => {
   const [itemCount, setItemCount] = useState(1);
   const { cartDispatch } = useCart();
+  const { wishlistState, wishlistDispatch } = useWishlist();
 
   return (
     <div className="cart-card card-horizontal m-m">
@@ -63,14 +65,19 @@ const CartCard = (props) => {
         </div>
         <CardButton
           variant="button-secondary product-card-button place-order"
-          // onClick={() => {
-          //   cartDispatch({
-          //     type: " PLACE-ORDER",
-          //     payload: {
-          //       product: props.product,
-          //     },
-          //   });
-          // }}
+          onClick={() => {
+            cartDispatch({
+              type: "REMOVE-ITEM",
+              payload: {
+                product: props.product,
+              },
+            });
+
+            wishlistDispatch({
+              type: "ADD-ITEM",
+              payload: { product: props.product },
+            });
+          }}
           info={
             <>
               <span className="m-s text-md">Move to Wishlist</span>
