@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
+import { useCart } from "../../context/CartContext/CartContext";
 
 const Header = () => {
   const { productDispatch } = useProductContext();
+  const { cartState } = useCart();
 
   return (
     <nav className="header navbar-container">
@@ -75,7 +77,9 @@ const Header = () => {
           <Link to="Cart" className="nav-icon-link">
             <span className="badge nav-icon-badge">
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-              <span className="badge-count">10</span>
+              {cartState.itemTotal !== 0 && (
+                <span className="badge-count">{cartState.itemTotal}</span>
+              )}
             </span>
             <span className="nav-icon-text">Cart</span>
           </Link>

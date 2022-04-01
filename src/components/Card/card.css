@@ -17,8 +17,8 @@
   display: block;
 }
 
-.cart-card {
-  width: 50rem;
+.cart-card-list {
+  width: 70rem;
   height: 30rem;
 }
 
@@ -28,12 +28,15 @@
 
 .counter-button {
   font-size: 2rem;
+  margin: 0 5px;
 }
 
 .item-counter input[type="number"] {
   width: 3ch;
+  height: 70%;
   padding-left: 2ch;
   -moz-appearance: textfield;
+  padding-top: -2px;
 }
 
 .item-counter input[type="number"]::-webkit-outer-spin-button,
@@ -44,9 +47,18 @@
 
 .item-counter {
   display: flex;
-  gap: 5px;
+  align-items: center;
 }
 
-.product-bill {
+.cart-bill {
   justify-content: start;
+}
+
+.product-card {
+  width: 30rem;
+  height: 50rem;
+}
+
+.no-show {
+  display: none;
 }

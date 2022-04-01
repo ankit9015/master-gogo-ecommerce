@@ -1,52 +1,64 @@
 import React from "react";
-import { useState } from "react";
+import { CardButton } from "../../components/Card/Card";
 import CartCard from "../../components/Card/CartCard";
-import { products } from "../../backend/db/products";
+
+import { useCart } from "../../context/CartContext/CartContext";
 
 function Cart() {
-  const [cartList, setCartList] = useState([]);
+  const { cartState } = useCart();
+
+  let deliveryCharges = cartState.itemTotal ? 499 : 0;
+
   return (
     <div>
-      <h1 class="text-center text-xl font-extrabold line-height-lg">
-        My Cart(1)
+      <h1 className="text-center text-xl font-extrabold line-height-lg">
+        My Cart({cartState.itemTotal})
       </h1>
-      <div class="cart-main flex-row">
-        <div class=" flex-column product-card-list">
-          {products.map((product) => (
-            <li>
+      <div className="cart-main flex-row">
+        <div className=" flex-column cart-card-list m-m">
+          {cartState.cartItems.map((product) => (
+            <li key={product._id}>
               <CartCard product={product} />
             </li>
           ))}
         </div>
-        <div className="flex-column">
-          <div class="product-bill card-vertical text-md">
-            <div class="card-body">
-              <h1 class="text-xl font-extrabold line-height-s">
+        <div className="flex-column m-m">
+          <div className="cart-bill card-vertical text-md">
+            <div className="card-body">
+              <h1 className="text-lg font-extrabold line-height-s">
                 PRICE DETAILS
               </h1>
-              <hr class="gray-line" />
-              <div class="flex-row main-space-between">
-                <h2>Price (2 items)</h2>
-                <span class="text-lg">₹3999</span>
+              <hr className="gray-line" />
+              <div className="flex-row main-space-between">
+                <span>{`Price (${cartState.itemTotal} items)`}</span>
+                <span className="text-lg">{`₹${cartState.priceTotal}`}</span>
               </div>
-              <div class="flex-row main-space-between">
+              <div className="flex-row main-space-between">
                 <h2>Discount</h2>
-                <span class="text-lg">-₹1999</span>
+                <span className="text-lg">{`₹${cartState.discountedPriceTotal}`}</span>
               </div>
-              <div class="flex-row main-space-between">
+              <div className="flex-row main-space-between">
                 <h2>Delivery Charges</h2>
-                <span class="text-lg">₹499</span>
+                <span className="text-lg">{`₹${deliveryCharges}`}</span>
               </div>
-              <hr class="gray-line" />
-              <div class="flex-row main-space-between">
-                <h2 class="font-extrabold">TOTAL AMOUNT</h2>
-                <span class="text-lg">₹3499</span>
+              <hr className="gray-line" />
+              <div className="flex-row main-space-between">
+                <h2 className="font-extrabold">TOTAL AMOUNT</h2>
+                <span className="text-lg">{`₹${
+                  cartState.discountedPriceTotal + deliveryCharges
+                }`}</span>
               </div>
-              <hr class="gray-line" />
-              <p>You will save ₹1999 on this order</p>
-              <button class="button button-primary go-to-cart">
-                PLACE ORDER
-              </button>
+              <hr className="gray-line" />
+              <p>{`You will save ₹${cartState.discountedPriceTotal} on this order`}</p>
+
+              <CardButton
+                variant="button-primary product-card-button place-order"
+                info={
+                  <>
+                    <span className="m-s text-md">Place Order</span>
+                  </>
+                }
+              />
             </div>
           </div>
         </div>

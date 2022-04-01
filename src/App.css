@@ -1,2 +1,23 @@
 /* @import url(https://socket-ui.netlify.app/components/components.css); */
 @import url(https://ecommerce-app-ankit9015.netlify.app/main.css);
+
+/* .global-footer {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+} */
+
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+}
+
+.page-layout__main {
+  flex: 1 2 auto;
+  height: 100%;
+}
+
+.page-layout:last-child {
+  margin-top: auto;
+}
