@@ -6,7 +6,7 @@ const Wishlist = () => {
   const { wishlist } = wishlistState;
 
   return (
-    <div className="product-display-section">
+    <div className="p-l">
       <h1 className="text-center text-xl font-extrabold line-height-lg">
         My Wishlist({wishlistState.itemTotal})
       </h1>

@@ -15,7 +15,7 @@ function App() {
           <ProductProvider>
             <div className="page-layout">
               <Header></Header>
-              <div className="page-layout__main">
+              <div className="page-layout__main m-l">
                 <Router />
               </div>
               <Footer></Footer>
