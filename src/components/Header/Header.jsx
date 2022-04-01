@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
+import { useCart } from "../../context/CartContext/CartContext";
+import { useEffect } from "react/cjs/react.production.min";
 
 const Header = ({ loginInfo }) => {
   const { productDispatch } = useProductContext();
-  const { isLogin, setIsLogin } = loginInfo;
+
+  const { cartState } = useCart();
 
   return (
     <nav className="header navbar-container">
@@ -60,11 +63,11 @@ const Header = ({ loginInfo }) => {
 
       <div className="right-navbar">
         <div className="nav-icons list-style-none ">
-          {islogin ? (
+          {false ? (
             <Link
               to="Login"
               className="nav-icon-link"
-              onClick={() => setIsLogin(false)}
+              onClick={() => loginInfo.setIsLogin(false)}
             >
               <span className="badge nav-icon-badge">
                 <i className="fa fa-user" aria-hidden="true"></i>
@@ -89,7 +92,9 @@ const Header = ({ loginInfo }) => {
           <Link to="Cart" className="nav-icon-link">
             <span className="badge nav-icon-badge">
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-              <span className="badge-count">10</span>
+              {cartState.itemTotal !== 0 && (
+                <span className="badge-count">{cartState.itemTotal}</span>
+              )}
             </span>
             <span className="nav-icon-text">Cart</span>
           </Link>
