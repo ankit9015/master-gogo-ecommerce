@@ -43,20 +43,34 @@ const cartReducer = (state, action) => {
 
     case "DECREMENT":
       return findCartItem(state, product)
-        ? {
-            ...state,
-            itemTotal: state.itemTotal - 1,
-            priceTotal: state.priceTotal - Number(product.price),
+        ? findCartItem(state, product).count > 1
+          ? {
+              ...state,
+              itemTotal: state.itemTotal - 1,
+              priceTotal: state.priceTotal - Number(product.price),
 
-            discountedPriceTotal:
-              state.discountedPriceTotal - Number(product.discountedPrice),
+              discountedPriceTotal:
+                state.discountedPriceTotal - Number(product.discountedPrice),
 
-            cartItems: state.cartItems.map((item) =>
-              item.id === product.id
-                ? { ...item, count: item.count > 1 ? item.count - 1 : 0 }
-                : item
-            ),
-          }
+              cartItems: state.cartItems.map((item) =>
+                item.id === product.id
+                  ? { ...item, count: item.count > 1 ? item.count - 1 : 0 }
+                  : item
+              ),
+            }
+          : {
+              ...state,
+              itemTotal: state.itemTotal - 1,
+
+              priceTotal: state.priceTotal - product.price,
+
+              discountedPriceTotal:
+                state.discountedPriceTotal - product.discountedPrice,
+
+              cartItems: state.cartItems.filter(
+                (item) => item.id !== product.id
+              ),
+            }
         : state;
     case "REMOVE-ITEM":
       const itemToRemove = findCartItem(state, product);
