@@ -7,15 +7,18 @@
   margin: auto;
 } */
 
+html {
+  min-height: 100%;
+  --primary-color: #ffaa00;
+}
+
 .page-layout {
   display: flex;
   flex-direction: column;
-  height: min-content;
 }
 
 .page-layout__main {
-  flex: 1 2 auto;
-  height: 100%;
+  flex: 1;
 }
 
 .page-layout:last-child {
