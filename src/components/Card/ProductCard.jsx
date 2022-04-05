@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { CardImage, CardButton } from "./Card";
 import "./card.css";
 import { useCart } from "../../context/CartContext/CartContext";
+import { FaHeart } from "react-icons/fa";
 
 function ProductCard(props) {
   const { cartState, cartDispatch } = useCart();
@@ -23,6 +24,7 @@ function ProductCard(props) {
       <CardImage src={props.product.img} alt={props.product.name} />
       <div className="badge-wishlist flex-row button">
         <i className="fa fa-heart wishlist-icon" aria-hidden="true"></i>
+        <FaHeart className="wishlist-icon" />
       </div>
       <div className="card-body">
         <h1 className="card-title">{props.product.name}</h1>

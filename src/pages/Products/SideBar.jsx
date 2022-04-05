@@ -27,11 +27,9 @@ export function SideBar() {
     })();
   }, []);
 
-  const filterHandler = () => {};
-
   return (
     <div className="filter-column flex-column">
-      <h1 className="text-bold">Filters</h1>
+      <h3 className="H3">Filters</h3>
       <button
         className="text-md m-m small-button button button-outline-secondary"
         onClick={() => productDispatch({ type: "CLEAR-FILTER" })}
@@ -41,7 +39,7 @@ export function SideBar() {
 
       <div>
         <h2 className="text-md font-bold">Price</h2>
-        <div className="m-m flex-column">
+        <div className="m-s flex-column">
           <div className="text-md price-filter-container flex-row flex-center">
             <span>Min: </span>
             <span className="price-filter-min">0</span>
@@ -87,7 +85,7 @@ export function SideBar() {
 
       <div>
         <h2 className="text-md font-bold">Category</h2>
-        <div className="category-filter m-m text-md flex-column">
+        <div className="category-filter m-s text-md flex-column">
           {categories.map(({ _id, categoryName }) => {
             return (
               <label key={_id}>
@@ -111,7 +109,7 @@ export function SideBar() {
 
       <div>
         <h2 className="text-md font-bold">Rating</h2>
-        <div className="ratings-filter m-m text-md flex-column">
+        <div className="ratings-filter m-s text-md flex-column">
           {ratings.map(({ numStars, ratingName }) => {
             return (
               <label key={numStars}>
@@ -134,7 +132,7 @@ export function SideBar() {
       </div>
       <div>
         <h2 className="text-md font-bold">Sort by</h2>
-        <div className="sort-by-price flex-column m-m text-md">
+        <div className="sort-by-price flex-column m-s text-md">
           <h6 className="text-md">By Price:</h6>
           <label>
             <input

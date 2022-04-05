@@ -1,22 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
 import { useCart } from "../../context/CartContext/CartContext";
-import { useEffect } from "react/cjs/react.production.min";
+import {
+  FaBars,
+  FaSearch,
+  FaUser,
+  FaShoppingCart,
+  FaHeart,
+} from "react-icons/fa";
 
 const Header = ({ loginInfo }) => {
   const { productDispatch } = useProductContext();
 
   const { cartState } = useCart();
 
+  const getActiveLinkStyle = ({ isActive }) => ({
+    color: isActive ? "var(--primary-color)" : "",
+  });
+
   return (
     <nav className="header navbar-container">
       {/* -- ----------------------- NavBar left start --------------- */}
       <div className="navbar-left flex-row">
         <div className="hamburger-icon nav-icon-badge">
-          <i className="fa-solid fa-bars" aria-hidden="true"></i>
+          <FaBars />
         </div>
         <div className="nav-logo">
-          <Link
+          <NavLink
+            style={getActiveLinkStyle}
             to="Home"
             onClick={() =>
               productDispatch({
@@ -25,12 +36,13 @@ const Header = ({ loginInfo }) => {
             }
           >
             <img src="./logo-ecom.png" alt="logo" />
-          </Link>
+          </NavLink>
         </div>
-        <Link to="Mockapi">
+        <NavLink to="Mockapi" style={getActiveLinkStyle}>
           <span>Mockman</span>
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
+          style={getActiveLinkStyle}
           to="Products"
           className="m-m"
           onClick={() =>
@@ -40,7 +52,7 @@ const Header = ({ loginInfo }) => {
           }
         >
           <span>Products</span>
-        </Link>
+        </NavLink>
       </div>
 
       {/* -- ----------------------- NavBar left ends --------------- */}
@@ -48,7 +60,7 @@ const Header = ({ loginInfo }) => {
       {/* ----------------- Searchbox start -------------------- */}
 
       <div className="search-box flex-row">
-        <i className="fa-solid fa-search" aria-hidden="true"></i>
+        <FaSearch />
         <input
           className="search-input"
           type="search"
@@ -64,40 +76,53 @@ const Header = ({ loginInfo }) => {
       <div className="right-navbar">
         <div className="nav-icons list-style-none ">
           {false ? (
-            <Link
+            <NavLink
+              style={getActiveLinkStyle}
               to="Login"
               className="nav-icon-link"
               onClick={() => loginInfo.setIsLogin(false)}
             >
               <span className="badge nav-icon-badge">
-                <i className="fa fa-user" aria-hidden="true"></i>
+                <i className="" aria-hidden="true"></i>
               </span>
               <span className="nav-icon-text">Logout</span>
-            </Link>
+            </NavLink>
           ) : (
-            <Link to="Login" className="nav-icon-link">
+            <NavLink
+              style={getActiveLinkStyle}
+              to="Login"
+              className="nav-icon-link"
+            >
               <span className="badge nav-icon-badge">
-                <i className="fa fa-user" aria-hidden="true"></i>
+                <FaUser />
               </span>
               <span className="nav-icon-text">Login</span>
-            </Link>
+            </NavLink>
           )}
-          <Link to="Wishlist" className="nav-icon-link">
+          <NavLink
+            style={getActiveLinkStyle}
+            to="Wishlist"
+            className="nav-icon-link"
+          >
             <span className="badge nav-icon-badge">
-              <i className="fa fa-heart" aria-hidden="true"></i>
+              <FaHeart />
               <span className="badge-count">0</span>
             </span>
             <span className="nav-icon-text">Wishlist</span>
-          </Link>
-          <Link to="Cart" className="nav-icon-link">
+          </NavLink>
+          <NavLink
+            style={getActiveLinkStyle}
+            to="Cart"
+            className="nav-icon-link"
+          >
             <span className="badge nav-icon-badge">
-              <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+              <FaShoppingCart />
               {cartState.itemTotal !== 0 && (
                 <span className="badge-count">{cartState.itemTotal}</span>
               )}
             </span>
             <span className="nav-icon-text">Cart</span>
-          </Link>
+          </NavLink>
         </div>
       </div>
     </nav>
