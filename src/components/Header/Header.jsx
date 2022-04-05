@@ -1,5 +1,6 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
+import { useWishlist } from "../../context/WishlistContext/WishlistContext";
 import { useCart } from "../../context/CartContext/CartContext";
 import {
   FaBars,
@@ -13,6 +14,7 @@ const Header = ({ loginInfo }) => {
   const { productDispatch } = useProductContext();
 
   const { cartState } = useCart();
+  const { wishlistState } = useWishlist();
 
   const getActiveLinkStyle = ({ isActive }) => ({
     color: isActive ? "var(--primary-color)" : "",
@@ -106,7 +108,9 @@ const Header = ({ loginInfo }) => {
           >
             <span className="badge nav-icon-badge">
               <FaHeart />
-              <span className="badge-count">0</span>
+              {wishlistState.itemTotal > 0 && (
+                <span className="badge-count">{wishlistState.itemTotal}</span>
+              )}
             </span>
             <span className="nav-icon-text">Wishlist</span>
           </NavLink>

@@ -1,3 +1,4 @@
+import { useWishlist } from "../../context/WishlistContext/WishlistContext";
 import { React, useState, useEffect } from "react";
 import { CardImage, CardButton } from "./Card";
 import "./card.css";
@@ -5,9 +6,12 @@ import { useCart } from "../../context/CartContext/CartContext";
 import { FaHeart } from "react-icons/fa";
 
 function ProductCard(props) {
+  const { wishlistState, wishlistDispatch } = useWishlist();
+
   const { cartState, cartDispatch } = useCart();
 
   const [inCart, setInCart] = useState(false);
+  const [inWishlist, setInWishlist] = useState(false);
 
   const isInCart = () => {
     cartState.cartItems.find((item) => item.id === props.product.id)
@@ -15,14 +19,34 @@ function ProductCard(props) {
       : setInCart(false);
   };
 
+  const isInWishlist = () => {
+    wishlistState.wishlist.find((item) => item.id === props.product.id)
+      ? setInWishlist(true)
+      : setInWishlist(false);
+  };
+
   useEffect(() => {
     isInCart();
+    isInWishlist();
   });
 
   return (
     <div className="card-vertical product-card">
       <CardImage src={props.product.img} alt={props.product.name} />
-      <div className="badge-wishlist flex-row button">
+      <div
+        className="badge-wishlist flex-row button"
+        onClick={() =>
+          inWishlist
+            ? wishlistDispatch({
+                type: "REMOVE-ITEM",
+                payload: { product: props.product },
+              })
+            : wishlistDispatch({
+                type: "ADD-ITEM",
+                payload: { product: props.product },
+              })
+        }
+      >
         <i className="fa fa-heart wishlist-icon" aria-hidden="true"></i>
         <FaHeart className="wishlist-icon" />
       </div>
@@ -42,7 +66,29 @@ function ProductCard(props) {
         </div>
 
         <div className="flex-row flex-center">
-          {inCart ? (
+          {props.page === "wishlistPage" ? (
+            <CardButton
+              variant="button-primary product-card-button"
+              link="../Cart"
+              onClick={() => {
+                cartDispatch({
+                  type: "ADD-ITEM",
+                  payload: {
+                    product: props.product,
+                  },
+                });
+                wishlistDispatch({
+                  type: "REMOVE-ITEM",
+                  payload: { product: props.product },
+                });
+              }}
+              info={
+                <>
+                  <span className="m-s text-md">Move to cart</span>
+                </>
+              }
+            />
+          ) : inCart ? (
             <CardButton
               variant="button-primary product-card-button"
               link="../Cart"
@@ -64,7 +110,6 @@ function ProductCard(props) {
                     product: props.product,
                   },
                 });
-                isInCart(props.product);
               }}
               info={
                 <>
