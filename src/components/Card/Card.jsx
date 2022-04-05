@@ -7,6 +7,7 @@ const CardButton = (props) => {
     <Link
       to={props.link}
       className={`button card-btn link-btn text-center ${props.variant}`}
+      onClick={props.onClick}
     >
       <span>{props.info}</span>
     </Link>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
+import { useWishlist } from "../../context/WishlistContext/WishlistContext";
 import { useCart } from "../../context/CartContext/CartContext";
 import { useEffect } from "react/cjs/react.production.min";
 
@@ -7,6 +8,7 @@ const Header = ({ loginInfo }) => {
   const { productDispatch } = useProductContext();
 
   const { cartState } = useCart();
+  const { wishlistState } = useWishlist();
 
   return (
     <nav className="header navbar-container">
@@ -85,7 +87,9 @@ const Header = ({ loginInfo }) => {
           <Link to="Wishlist" className="nav-icon-link">
             <span className="badge nav-icon-badge">
               <i className="fa fa-heart" aria-hidden="true"></i>
-              <span className="badge-count">0</span>
+              {wishlistState.itemTotal > 0 && (
+                <span className="badge-count">{wishlistState.itemTotal}</span>
+              )}
             </span>
             <span className="nav-icon-text">Wishlist</span>
           </Link>
