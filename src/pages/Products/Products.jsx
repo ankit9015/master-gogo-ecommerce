@@ -3,12 +3,16 @@ import "./products.css";
 
 import { SideBar } from "./SideBar";
 import { DisplaySection } from "./DisplaySection";
+import Header from "../../components/Header/Header";
 
 function Products() {
   return (
-    <div className="flex-row product-page-main">
-      <SideBar />
-      <DisplaySection />
+    <div>
+      <Header />
+      <div className="flex-row product-page-main">
+        <SideBar />
+        <DisplaySection />
+      </div>
     </div>
   );
 }

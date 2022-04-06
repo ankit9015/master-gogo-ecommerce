@@ -20,6 +20,17 @@ html {
   height: 60%;
 }
 
+.product-card .card-btn,
+.cart-card .card-btn {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 1px 1px 9px -1px var(--primary-color);
+}
+
 .display-block {
   display: block;
 }

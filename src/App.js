@@ -14,13 +14,7 @@ function App() {
       <CartProvider>
         <WishlistProvider>
           <ProductProvider>
-            <div className="page-layout">
-              <Header></Header>
-              <div className="page-layout__main m-l">
-                <Router />
-              </div>
-              <Footer></Footer>
-            </div>
+            <Router />
           </ProductProvider>
         </WishlistProvider>
       </CartProvider>

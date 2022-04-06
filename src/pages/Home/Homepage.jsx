@@ -1,16 +1,22 @@
 import { categories } from "../../backend/db/categories";
 import { newStocks } from "../../backend/db/announcements";
 import Card from "../../components/Card/Card";
-import React from "react";
+import { React, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../Router/router";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
+import Header from "../../components/Header/Header";
 
 const Home = () => {
   const { productDispatch } = useProductContext();
 
+  useEffect(() => {
+    document.title = "Home";
+  }, []);
+
   return (
     <div>
+      <Header />
       {/* ------------------------------------------------------categoy ribbon starts */}
       <div className="ribbon flex-row">
         {categories.map((item) => (
@@ -57,7 +63,7 @@ const Home = () => {
             subtitle={item.categoryName.toUpperCase()}
             description={item.description}
             cardButton={{
-              link: "../Login", //this link need to be updated, it should take to the repective category in product page.
+              link: "./Products",
               variant: "button-primary ",
               info: "Know More",
             }}

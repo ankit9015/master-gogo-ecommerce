@@ -1,7 +1,9 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
 import { useWishlist } from "../../context/WishlistContext/WishlistContext";
 import { useCart } from "../../context/CartContext/CartContext";
+import { useState, useEffect } from "react";
+
 import {
   FaBars,
   FaSearch,
@@ -20,6 +22,8 @@ const Header = ({ loginInfo }) => {
     color: isActive ? "var(--primary-color)" : "",
   });
 
+  const [showHeader, setShowHeader] = useState(true);
+
   return (
     <nav className="header navbar-container">
       {/* -- ----------------------- NavBar left start --------------- */}
@@ -30,14 +34,14 @@ const Header = ({ loginInfo }) => {
         <div className="nav-logo">
           <NavLink
             style={getActiveLinkStyle}
-            to="Home"
+            to="/"
             onClick={() =>
               productDispatch({
                 type: "CLEAR-FILTER",
               })
             }
           >
-            <img src="./logo-ecom.png" alt="logo" />
+            <img src="logo-ecom.png" alt="logo" />
           </NavLink>
         </div>
         <NavLink to="Mockapi" style={getActiveLinkStyle}>
@@ -45,7 +49,7 @@ const Header = ({ loginInfo }) => {
         </NavLink>
         <NavLink
           style={getActiveLinkStyle}
-          to="Products"
+          to="../Products"
           className="m-m"
           onClick={() =>
             productDispatch({
@@ -80,7 +84,7 @@ const Header = ({ loginInfo }) => {
           {false ? (
             <NavLink
               style={getActiveLinkStyle}
-              to="Login"
+              to="../Login"
               className="nav-icon-link"
               onClick={() => loginInfo.setIsLogin(false)}
             >
@@ -92,7 +96,7 @@ const Header = ({ loginInfo }) => {
           ) : (
             <NavLink
               style={getActiveLinkStyle}
-              to="Login"
+              to="../Login"
               className="nav-icon-link"
             >
               <span className="badge nav-icon-badge">
@@ -103,12 +107,12 @@ const Header = ({ loginInfo }) => {
           )}
           <NavLink
             style={getActiveLinkStyle}
-            to="Wishlist"
+            to="../Wishlist"
             className="nav-icon-link"
           >
             <span className="badge nav-icon-badge">
               <FaHeart />
-              {wishlistState.itemTotal > 0 && (
+              {wishlistState.itemTotal !== 0 && (
                 <span className="badge-count">{wishlistState.itemTotal}</span>
               )}
             </span>
@@ -116,7 +120,7 @@ const Header = ({ loginInfo }) => {
           </NavLink>
           <NavLink
             style={getActiveLinkStyle}
-            to="Cart"
+            to="../Cart"
             className="nav-icon-link"
           >
             <span className="badge nav-icon-badge">

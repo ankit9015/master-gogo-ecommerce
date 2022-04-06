@@ -4,10 +4,10 @@ import Home from "../pages/Home/Homepage";
 import Products from "../pages/Products/Products";
 import Wishlist from "../pages/Wishlist/Wishlist";
 import Cart from "../pages/Cart/Cart";
-import Auth from "../pages/Auth/Auth";
 import Login from "../pages/Auth/Login/Login";
 import MockAPI from "../pages/mockman/mockapi";
 import Signup from "../pages/Auth/Signup/Signup";
+import PageNotFound from "../pages/page-not-found/PageNotFound";
 
 const Router = () => {
   return (
@@ -19,6 +19,7 @@ const Router = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/mockapi" element={<MockAPI />} />
+      <Route path="/*" element={<PageNotFound />} />
     </Routes>
   );
 };

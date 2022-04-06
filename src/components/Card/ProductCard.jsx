@@ -48,7 +48,10 @@ function ProductCard(props) {
         }
       >
         <i className="fa fa-heart wishlist-icon" aria-hidden="true"></i>
-        <FaHeart className="wishlist-icon" />
+        <FaHeart
+          className="wishlist-icon"
+          color={inWishlist ? "red" : "gray"}
+        />
       </div>
       <div className="card-body">
         <h1 className="card-title">{props.product.name}</h1>
