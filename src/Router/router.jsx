@@ -7,15 +7,16 @@ import Cart from "../pages/Cart/Cart";
 import Auth from "../pages/Auth/Auth";
 import Login from "../pages/Auth/Login/Login";
 import MockAPI from "../pages/mockman/mockapi";
+import Signup from "../pages/Auth/Signup/Signup";
 
 const Router = () => {
   return (
     <Routes>
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/auth" element={<Auth />} />
+      <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/mockapi" element={<MockAPI />} />
     </Routes>

@@ -15,6 +15,7 @@ const Home = () => {
       <div className="ribbon flex-row">
         {categories.map((item) => (
           <Link
+            key={item._id}
             to="../Products"
             onClick={() =>
               productDispatch({
