@@ -35,13 +35,13 @@ const Card = (props) => {
     >
       <CardImage src={props.img.src} alt={props.img.alt} />
 
-      <div className="card-body">
+      <div className="card-body ">
         {props.title && <h3 className="card-title">{props.title}</h3>}
         {props.subtitle && (
           <h6 className="card-title-sub ">{props.subtitle}</h6>
         )}
         {props.description && (
-          <p className="card-description">{props.description}</p>
+          <p className="card-description line-clamp">{props.description}</p>
         )}
 
         {props.cardButton && (

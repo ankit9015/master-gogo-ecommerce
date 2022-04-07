@@ -20,6 +20,17 @@ html {
   height: 60%;
 }
 
+.product-card .card-btn,
+.cart-card .card-btn {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 1px 1px 9px -1px var(--primary-color);
+}
+
 .display-block {
   display: block;
 }
@@ -68,4 +79,24 @@ html {
 
 .no-show {
   display: none;
+}
+
+/* .card-description {
+  max-height: 40%;
+  width: 100%;
+} */
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.badge-count {
+  background-color: var(--primary-color);
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+  font-weight: bold;
+  color: var(--black);
 }

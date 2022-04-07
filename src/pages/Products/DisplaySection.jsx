@@ -14,7 +14,7 @@ export function DisplaySection() {
         <span className="text-md m-s">{`(Showing ${products.length} products) `}</span>
       </h2>
 
-      <div className="product-card-container">
+      <div className="product-display-area">
         {products &&
           products.map((product) => (
             <div key={product._id}>

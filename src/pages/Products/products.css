@@ -3,3 +3,26 @@
   border-radius: 2px;
   margin: 0 10px 0 2px;
 }
+
+.filter-column.filter-column {
+  width: 5rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  .filter-column {
+    display: none;
+  }
+  .hamburger-icon {
+    display: block;
+  }
+}
+
+.product-display-section {
+  flex: 1;
+}
+
+.product-display-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

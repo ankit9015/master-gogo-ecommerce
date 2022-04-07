@@ -3,6 +3,7 @@ import { React, useState, useEffect } from "react";
 import { CardImage, CardButton } from "./Card";
 import "./card.css";
 import { useCart } from "../../context/CartContext/CartContext";
+import { FaHeart } from "react-icons/fa";
 
 function ProductCard(props) {
   const { wishlistState, wishlistDispatch } = useWishlist();
@@ -47,6 +48,10 @@ function ProductCard(props) {
         }
       >
         <i className="fa fa-heart wishlist-icon" aria-hidden="true"></i>
+        <FaHeart
+          className="wishlist-icon"
+          color={inWishlist ? "red" : "gray"}
+        />
       </div>
       <div className="card-body">
         <h1 className="card-title">{props.product.name}</h1>
