@@ -1,4 +1,4 @@
-import { React, useReducer, useState, useEffect } from "react";
+import { React } from "react";
 import "./products.css";
 
 import { SideBar } from "./SideBar";

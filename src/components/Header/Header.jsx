@@ -44,7 +44,7 @@ const Header = ({ loginInfo }) => {
             <img src="logo-ecom.png" alt="logo" />
           </NavLink>
         </div>
-        <NavLink to="Mockapi" style={getActiveLinkStyle}>
+        {/* <NavLink to="Mockapi" style={getActiveLinkStyle}>
           <span>Mockman</span>
         </NavLink>
         <NavLink
@@ -58,7 +58,7 @@ const Header = ({ loginInfo }) => {
           }
         >
           <span>Products</span>
-        </NavLink>
+        </NavLink> */}
       </div>
 
       {/* -- ----------------------- NavBar left ends --------------- */}

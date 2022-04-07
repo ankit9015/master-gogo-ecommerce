@@ -20,7 +20,6 @@ export function SideBar() {
         const response = await axios.get("/api/categories");
         const categoriesList = response.data.categories;
         setCategories((prev) => [...prev, ...categoriesList]);
-        // setLoading(false);
       } catch (err) {
         alert(err);
       }
@@ -44,6 +43,7 @@ export function SideBar() {
             <span>Min: </span>
             <span className="price-filter-min">0</span>
             <input
+              className="price-range-input"
               type="range"
               name="price-filter"
               id="price-filter"
@@ -64,6 +64,7 @@ export function SideBar() {
             <span>Max: </span>
             <span className="price-filter-min">0</span>
             <input
+              className="price-range-input"
               type="range"
               name="price-filter"
               id="price-filter"
@@ -79,6 +80,26 @@ export function SideBar() {
               }}
             />
             <span className="price-filter-max">5000</span>
+          </div>
+          <div className="flex-row flex-center">
+            <span className="m-s">
+              Min :
+              <input
+                className="price-input-show"
+                type="number"
+                value={productState.price.min}
+                readOnly
+              />
+            </span>
+            <span className="m-s">
+              Max :
+              <input
+                className="price-input-show"
+                type="number"
+                value={productState.price.max}
+                readOnly
+              />
+            </span>
           </div>
         </div>
       </div>
