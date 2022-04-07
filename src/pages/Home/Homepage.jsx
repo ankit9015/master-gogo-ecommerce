@@ -1,17 +1,31 @@
-import { categories } from "../../backend/db/categories";
 import { newStocks } from "../../backend/db/announcements";
 import Card from "../../components/Card/Card";
-import { React, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../Router/router";
 import { useProductContext } from "../../context/ProductContext/ProductContext";
 import Header from "../../components/Header/Header";
+import axios from "axios";
 
 const Home = () => {
   const { productDispatch } = useProductContext();
 
   useEffect(() => {
     document.title = "Home";
+  }, []);
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get("/api/categories");
+        const categoriesList = response.data.categories;
+        setCategories((prev) => [...prev, ...categoriesList]);
+      } catch (err) {
+        alert(err);
+      }
+    })();
   }, []);
 
   return (
@@ -44,7 +58,10 @@ const Home = () => {
 
       {/* ---------------------------------------------------------------main shelf starts */}
       <div className="main-shelf">
-        <h1 className="H1 p-l">Some products will be displayed here</h1>
+        <h1 className="H1 p-l"></h1>
+        <div className="fluid-img">
+          <img src="cover-photo.jpg" alt="t-shirts" />
+        </div>
       </div>
       {/* ------------------------------------------------------------------main shelf ends */}
 

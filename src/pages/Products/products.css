@@ -26,3 +26,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.price-range-input {
+  accent-color: var(--secondary-color);
+}
