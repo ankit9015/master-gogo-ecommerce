@@ -11,7 +11,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./men-black-jacket.png",
   },
   {
     _id: uuid(),
@@ -23,7 +23,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./women-black-jacket.jpg",
   },
   {
     _id: uuid(),
@@ -35,7 +35,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./men-trouser.jpg",
   },
   {
     _id: uuid(),
@@ -47,7 +47,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./women-trouser.jpg",
   },
   {
     _id: uuid(),
@@ -59,7 +59,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./men-black-shirt.jpg",
   },
   {
     _id: uuid(),
@@ -71,7 +71,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./women-black-shirt.jpg",
   },
   {
     _id: uuid(),
@@ -83,7 +83,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./boy-green-jacket.jpg",
   },
   {
     _id: uuid(),
@@ -95,7 +95,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./girl-green-jacket.jpg",
   },
   {
     _id: uuid(),
@@ -107,7 +107,7 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "https://picsum.photos/id/1/200/300",
+    img: "./boy-red-tshirt.jpg",
   },
   {
     _id: uuid(),
@@ -119,24 +119,24 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "",
+    img: "./girl-red-tshirt.jpg",
   },
 
   {
     _id: uuid(),
-    name: "Men's Black Jacket",
-    categoryName: "men",
+    name: "Unisex Black Jacket",
+    categoryName: "unisex",
     ratings: 5,
     price: 5000,
     discountedPrice: "2000",
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "",
+    img: "./men-black-jacket.png",
   },
   {
     _id: uuid(),
-    name: "Men's Black Jacket",
+    name: "Men's Black shirt",
     categoryName: "men",
     ratings: 4,
     price: 5000,
@@ -144,6 +144,6 @@ export const products = [
     discount: "20%",
     inCart: false,
     inWishList: false,
-    img: "",
+    img: "./men-black-shirt.jpg",
   },
 ];

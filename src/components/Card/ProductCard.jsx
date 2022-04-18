@@ -3,7 +3,7 @@ import { React, useState, useEffect } from "react";
 import { CardImage, CardButton } from "./Card";
 import "./card.css";
 import { useCart } from "../../context/CartContext/CartContext";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaStar } from "react-icons/fa";
 
 function ProductCard(props) {
   const { wishlistState, wishlistDispatch } = useWishlist();
@@ -58,8 +58,8 @@ function ProductCard(props) {
 
         <div className="card-description">
           <div className="text-md">
-            {`Ratings: ${props.product.ratings}`}
-            <i className="rating-star fas fa-star"></i>
+            {`Ratings: ${props.product.ratings} / 5 `}
+            <FaStar className="rating-star fas fa-star" />
           </div>
           <span className="price-new text-lg font-extrabold">
             {`Price: ₹${props.product.discountedPrice}`}{" "}
