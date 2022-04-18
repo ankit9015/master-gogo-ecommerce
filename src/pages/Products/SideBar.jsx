@@ -49,7 +49,7 @@ export function SideBar() {
               id="price-filter"
               min="0"
               max="5000"
-              defaultValue={productState.price.min}
+              value={productState.price.min}
               step="1000"
               onChange={(e) =>
                 productDispatch({
@@ -70,7 +70,7 @@ export function SideBar() {
               id="price-filter"
               min="0"
               max="5000"
-              defaultValue={productState.price.max}
+              value={productState.price.max}
               step="1000"
               onChange={(e) => {
                 productDispatch({
