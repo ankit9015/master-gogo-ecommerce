@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { useCart } from "../../context/CartContext/CartContext";
 import { useWishlist } from "../../context/WishlistContext/WishlistContext";
 import { CardImage, CardButton } from "./Card";
+import { FaStar } from "react-icons/fa";
 import "./card.css";
 
 const CartCard = (props) => {
@@ -17,8 +18,8 @@ const CartCard = (props) => {
 
         <div className="card-description">
           <div className="text-md">
-            {`Ratings: ${props.product.ratings}`}
-            <i className="rating-star fas fa-star"></i>
+            {`Ratings: ${props.product.ratings} / 5`}
+            <FaStar className="rating-star fas fa-star" />
           </div>
           <div className="display-block">
             <span className="price-new text-lg font-extrabold">
