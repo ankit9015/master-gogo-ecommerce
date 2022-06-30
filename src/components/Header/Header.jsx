@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useProductContext } from "../../context/ProductContext/ProductContext";
-import { useWishlist } from "../../context/WishlistContext/WishlistContext";
-import { useCart } from "../../context/CartContext/CartContext";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 
 import {
   FaBars,
@@ -10,11 +8,13 @@ import {
   FaUser,
   FaShoppingCart,
   FaHeart,
-} from "react-icons/fa";
+  MdLogout,
+} from "../../utils/icon";
+import { useAuth, useCart, useProduct, useWishlist } from "../../context";
 
 const Header = ({ loginInfo }) => {
-  const { productDispatch } = useProductContext();
-
+  const { productDispatch } = useProduct();
+  const { authState } = useAuth();
   const { cartState } = useCart();
   const { wishlistState } = useWishlist();
 
@@ -44,12 +44,9 @@ const Header = ({ loginInfo }) => {
             <img src="logo-ecom.png" alt="logo" />
           </NavLink>
         </div>
-        {/* <NavLink to="Mockapi" style={getActiveLinkStyle}>
-          <span>Mockman</span>
-        </NavLink>
         <NavLink
           style={getActiveLinkStyle}
-          to="../Products"
+          to="../explore"
           className="m-m"
           onClick={() =>
             productDispatch({
@@ -57,8 +54,8 @@ const Header = ({ loginInfo }) => {
             })
           }
         >
-          <span>Products</span>
-        </NavLink> */}
+          <span>Explore</span>
+        </NavLink>
       </div>
 
       {/* -- ----------------------- NavBar left ends --------------- */}
@@ -81,22 +78,22 @@ const Header = ({ loginInfo }) => {
 
       <div className="right-navbar">
         <div className="nav-icons list-style-none ">
-          {false ? (
+          {authState?.authToken ? (
             <NavLink
               style={getActiveLinkStyle}
-              to="../Login"
+              to="../login"
               className="nav-icon-link"
               onClick={() => loginInfo.setIsLogin(false)}
             >
               <span className="badge nav-icon-badge">
-                <i className="" aria-hidden="true"></i>
+                <MdLogout />
               </span>
               <span className="nav-icon-text">Logout</span>
             </NavLink>
           ) : (
             <NavLink
               style={getActiveLinkStyle}
-              to="../Login"
+              to="../login"
               className="nav-icon-link"
             >
               <span className="badge nav-icon-badge">
@@ -107,7 +104,7 @@ const Header = ({ loginInfo }) => {
           )}
           <NavLink
             style={getActiveLinkStyle}
-            to="../Wishlist"
+            to="../wishlist"
             className="nav-icon-link"
           >
             <span className="badge nav-icon-badge">
@@ -120,7 +117,7 @@ const Header = ({ loginInfo }) => {
           </NavLink>
           <NavLink
             style={getActiveLinkStyle}
-            to="../Cart"
+            to="../cart"
             className="nav-icon-link"
           >
             <span className="badge nav-icon-badge">

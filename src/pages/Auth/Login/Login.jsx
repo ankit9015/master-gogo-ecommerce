@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import "../auth.css";
-import Header from "../../../components/Header/Header";
+import { Header } from "../../../components";
+import { useAuth } from "../../../context";
 
-function Login({ loginInfo }) {
+function Login() {
   const [loginForm, setLoginForm] = useState({
-    username: "",
     email: "",
     password: "",
     rememberUser: false,
   });
+  const { loginHandler } = useAuth();
 
   useEffect(() => {
     document.title = "Login";
@@ -31,6 +32,11 @@ function Login({ loginInfo }) {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    loginHandler(loginForm);
+  };
+
   return (
     <div>
       <Header />
@@ -40,7 +46,11 @@ function Login({ loginInfo }) {
             <h1 className="card-title text-lg m-m font-extrabold text-center">
               Login
             </h1>
-            <div className="form-container ">
+            <form
+              className="form-container "
+              onSubmit={(e) => submitHandler(e)}
+              autoComplete="true"
+            >
               <label className="flex-column">
                 <span className="text-md socketui-label label-required">
                   Email:
@@ -91,13 +101,12 @@ function Login({ loginInfo }) {
               <Link className="text-blue" to="../PageNotFound">
                 Forgot your Password?
               </Link>
-              <Link
-                to="../Products"
+              <button
+                type="submit"
                 className="button-primary link-btn text-md text-center"
-                onClick={() => loginInfo.setIsLogin(true)}
               >
                 Login
-              </Link>
+              </button>
 
               <Link
                 className="text-center link-btn button-outline-secondary"
@@ -105,7 +114,7 @@ function Login({ loginInfo }) {
               >
                 Create new account{" "}
               </Link>
-            </div>
+            </form>
           </div>
         </div>
       </div>

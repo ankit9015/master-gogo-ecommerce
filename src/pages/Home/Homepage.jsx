@@ -3,12 +3,12 @@ import Card from "../../components/Card/Card";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../Router/router";
-import { useProductContext } from "../../context/ProductContext/ProductContext";
 import Header from "../../components/Header/Header";
 import axios from "axios";
+import { useProduct } from "../../context";
 
 const Home = () => {
-  const { productDispatch } = useProductContext();
+  const { productDispatch } = useProduct();
 
   useEffect(() => {
     document.title = "Home";
