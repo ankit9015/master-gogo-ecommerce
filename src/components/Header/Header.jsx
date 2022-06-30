@@ -12,17 +12,15 @@ import {
 } from "../../utils/icon";
 import { useAuth, useCart, useProduct, useWishlist } from "../../context";
 
-const Header = ({ loginInfo }) => {
+const Header = () => {
   const { productDispatch } = useProduct();
-  const { authState } = useAuth();
+  const { authState, logoutHandler } = useAuth();
   const { cartState } = useCart();
   const { wishlistState } = useWishlist();
 
   const getActiveLinkStyle = ({ isActive }) => ({
     color: isActive ? "var(--primary-color)" : "",
   });
-
-  const [showHeader, setShowHeader] = useState(true);
 
   return (
     <nav className="header navbar-container">
@@ -83,7 +81,7 @@ const Header = ({ loginInfo }) => {
               style={getActiveLinkStyle}
               to="../login"
               className="nav-icon-link"
-              onClick={() => loginInfo.setIsLogin(false)}
+              onClick={() => logoutHandler()}
             >
               <span className="badge nav-icon-badge">
                 <MdLogout />

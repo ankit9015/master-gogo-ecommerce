@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const logOutHandler = () => {
+  const logoutHandler = () => {
     localStorage.removeItem("AUTH-TOKEN");
     localStorage.removeItem("TRASH");
     setAuthState({ isLoggedIn: false, authToken: undefined });
@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
         setAuthState,
         loginHandler,
         signupHandler,
-        logOutHandler,
+        logoutHandler,
       }}
     >
       {children}
