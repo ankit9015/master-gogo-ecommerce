@@ -1,0 +1,92 @@
+.ribbon {
+  gap: 4rem;
+  padding: 2rem;
+  overflow-x: scroll;
+}
+
+.product-category {
+  flex: 1;
+}
+
+.product-category .card-img {
+  height: 15rem;
+  object-fit: cover;
+}
+
+.product-category .text-overlay {
+  text-shadow: 1rem var(--off-white);
+  transform: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.announcement {
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: center;
+  align-content: center;
+}
+
+.new-arrivals.card-horizontal {
+  flex: 0;
+  min-width: clamp(30rem, 40vw, 45rem);
+  height: clamp(15rem, 25vw, 20rem);
+  padding: 0.5rem;
+}
+
+.new-arrivals .card-title {
+  margin: 0;
+  font-size: 1.4em;
+  line-height: normal;
+}
+.new-arrivals .card-title-sub {
+  font-size: 1.2rem;
+}
+
+.new-arrivals .card-img {
+  width: 40%;
+  padding: 5px;
+}
+
+.new-arrivals .card-body {
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0;
+}
+
+.new-arrivals .card-description {
+  margin: 0;
+}
+
+.banner {
+  min-height: auto;
+  background-color: var(--white);
+  margin: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: grid;
+}
+
+.banner-cta-btn {
+  cursor: pointer;
+  width: 10rem;
+  margin: auto;
+  z-index: 2;
+}
+
+.banner .fluid-img {
+  width: 90%;
+}
+@media screen and (max-width: 800px) {
+  .new-arrivals.card-horizontal {
+    min-width: 28rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .new-arrivals.card-horizontal {
+    flex: 1;
+  }
+  .product-category .card-img {
+    height: 10rem;
+  }
+}

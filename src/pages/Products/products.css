@@ -8,25 +8,46 @@
   width: 5rem;
 }
 
-@media only screen and (max-width: 1024px) {
-  .filter-column {
-    display: none;
-  }
-  .hamburger-icon {
-    display: block;
-  }
+.filter-icon {
+  display: none;
 }
 
 .product-display-section {
   flex: 1;
+  width: 100vw;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.product-display-section .header {
+  margin-bottom: 2rem;
+}
+
+.header .H3 {
+  width: fit-content;
+}
+
+.product-display-section .filter-icon {
+  margin-left: auto;
+  margin-right: 1rem;
 }
 
 .product-display-area {
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-evenly;
 }
 
 .price-range-input {
   accent-color: var(--secondary-color);
+}
+
+@media only screen and (max-width: 1024px) {
+  .filter-column {
+    display: none;
+  }
+  .filter-icon {
+    display: block;
+  }
 }

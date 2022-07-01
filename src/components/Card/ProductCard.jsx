@@ -60,18 +60,20 @@ function ProductCard(props) {
         />
       </div>
       <div className="card-body">
-        <h1 className="card-title">{props.product.name}</h1>
+        <h1 className="card-title text-md">{props.product.name}</h1>
 
         <div className="card-description">
           <div className="text-md">
             {`Ratings: ${props.product.ratings} / 5 `}
             <FaStar className="rating-star fas fa-star" />
           </div>
-          <span className="price-new text-lg font-extrabold">
+          <span className="price-new text-md font-extrabold">
             {`Price: ₹${props.product.discountedPrice}`}{" "}
           </span>{" "}
-          <span className="text-lg font-light price-old font-light text-gray">{`₹${props.product.price}`}</span>
-          <div className="text-md">{`${props.product.discount}- off`}</div>
+          <span className="text-md font-light price-old font-light text-gray">{`₹${props.product.price}`}</span>
+          <p className="text-md">
+            <small>{`${props.product.discount}- off`}</small>
+          </p>
         </div>
 
         <div className="flex-row flex-center">

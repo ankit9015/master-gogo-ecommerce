@@ -1,8 +1,5 @@
-
-
 html {
   min-height: 100%;
-
   --primary-color: #ffaa00;
 }
 
@@ -19,4 +16,10 @@ html {
 
 .page-layout:last-child {
   margin-top: auto;
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 50%;
+  }
 }

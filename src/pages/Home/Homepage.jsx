@@ -1,15 +1,16 @@
 import { newStocks } from "../../backend/db/announcements";
 import Card from "../../components/Card/Card";
 import { React, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../Router/router";
-import Header from "../../components/Header/Header";
 import axios from "axios";
 import { useProduct } from "../../context";
+import { Header } from "../../components";
+import "./Homepage.css";
 
 const Home = () => {
   const { productDispatch } = useProduct();
-
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Home";
   }, []);
@@ -47,7 +48,7 @@ const Home = () => {
             <Card
               key={item._id}
               variant="vertical"
-              className="product-category m-s p-m"
+              className="product-category p-s"
               img={{ src: item.img, alt: item.categoryName }}
               overlayText={item.categoryName}
             />
@@ -56,14 +57,19 @@ const Home = () => {
       </div>
       {/* -----------------------------------------------------------category ribbon ends */}
 
-      {/* ---------------------------------------------------------------main shelf starts */}
-      <div className="main-shelf">
-        <h1 className="H1 p-l"></h1>
+      {/* ---------------------------------------------------------------banner starts */}
+      <div className="banner">
         <div className="fluid-img">
           <img src="cover-photo.jpg" alt="t-shirts" />
         </div>
+        <button
+          className="button-primary banner-cta-btn text-md"
+          onClick={() => navigate("../explore")}
+        >
+          Shop Now
+        </button>
       </div>
-      {/* ------------------------------------------------------------------main shelf ends */}
+      {/* ------------------------------------------------------------------banner ends */}
 
       {/* ------------------------------------------------------------------announcement ribbon starts */}
       <div className="announcement ribbon flex-row">

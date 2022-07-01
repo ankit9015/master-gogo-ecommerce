@@ -17,13 +17,18 @@ html {
 }
 
 .card-vertical .card-img {
-  height: 60%;
+  height: 40%;
+}
+
+.card-title {
+  line-height: normal;
 }
 
 .product-card .card-btn,
 .cart-card .card-btn {
-  max-width: 80%;
+  max-width: 95%;
   margin: 0 auto;
+  padding: 0;
 }
 
 .button:hover {
@@ -42,6 +47,8 @@ html {
 
 .cart-card > .card-body {
   width: 60%;
+  padding: 0;
+  justify-content: start;
 }
 
 .cart-card {
@@ -78,18 +85,13 @@ html {
 }
 
 .product-card {
-  width: 30rem;
-  height: 50rem;
+  width: 20rem;
+  height: 30rem;
 }
 
 .no-show {
   display: none;
 }
-
-/* .card-description {
-  max-height: 40%;
-  width: 100%;
-} */
 
 .line-clamp {
   display: -webkit-box;
@@ -104,4 +106,10 @@ html {
   padding: 0 0.5rem;
   font-weight: bold;
   color: var(--black);
+}
+
+@media screen and (max-width: 500px) {
+  .product-card {
+    width: 15rem;
+  }
 }

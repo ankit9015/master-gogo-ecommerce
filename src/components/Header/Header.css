@@ -1,0 +1,27 @@
+.header {
+  position: sticky;
+  z-index: 2;
+}
+
+.navbar-container {
+  min-height: 6rem;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .search-box {
+    display: none;
+  }
+  .nav-logo {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .search-box {
+    display: none;
+  }
+  .nav-logo {
+    display: block;
+  }
+}
