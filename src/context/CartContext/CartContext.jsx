@@ -20,7 +20,6 @@ const cartReducer = (state, action) => {
   switch (type) {
     case "ADD-ITEM":
     case "INCREMENT":
-      console.log("inside");
       return findCartItem(state, product)
         ? {
             ...state,
@@ -95,8 +94,6 @@ const cartReducer = (state, action) => {
 
 const CartProvider = ({ children }) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, defaultCartState);
-
-  useEffect(() => console.log(cartState));
 
   return (
     <CartContext.Provider value={{ cartState, cartDispatch }}>

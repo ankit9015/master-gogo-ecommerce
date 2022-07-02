@@ -17,7 +17,6 @@ const wishlistReducer = (state, action) => {
 
   switch (type) {
     case "ADD-ITEM":
-      console.log("inside");
       return findItem(state, product)
         ? state
         : {
@@ -45,8 +44,6 @@ const WishlistProvider = ({ children }) => {
     wishlistReducer,
     defaultState
   );
-
-  useEffect(() => console.log(wishlistState));
 
   return (
     <WishlistContext.Provider value={{ wishlistState, wishlistDispatch }}>

@@ -1,6 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   min-height: 100%;
   --primary-color: #ffaa00;
+  --translucent-gray: rgba(92, 88, 88, 0.429);
+}
+
+.App {
+  max-width: 100vw;
 }
 
 .page-layout {
