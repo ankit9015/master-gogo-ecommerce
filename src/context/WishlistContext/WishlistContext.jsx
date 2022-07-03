@@ -1,10 +1,12 @@
 import { React, createContext, useContext, useEffect, useReducer } from "react";
+import { useToast } from "..";
 
 const WishlistContext = createContext();
 
 const defaultState = {
   itemTotal: 0,
   wishlist: [],
+  toastMessage: null,
 };
 
 const findItem = (state, product) => {
@@ -13,29 +15,32 @@ const findItem = (state, product) => {
 
 const wishlistReducer = (state, action) => {
   const { type, payload } = action;
-  const { product } = payload;
 
   switch (type) {
     case "ADD-ITEM":
-      return findItem(state, product)
+      return findItem(state, payload.product)
         ? state
         : {
             ...state,
             itemTotal: state.itemTotal + 1,
-            wishlist: [...state.wishlist, { ...product }],
+            wishlist: [...state.wishlist, { ...payload.product }],
+            toastMessage: "Product added to wishlist",
           };
 
     case "REMOVE-ITEM":
-      return findItem(state, product)
+      return findItem(state, payload.product)
         ? {
             ...state,
             itemTotal: state.itemTotal - 1,
 
-            wishlist: state.wishlist.filter((item) => item.id !== product.id),
+            wishlist: state.wishlist.filter(
+              (item) => item.id !== payload.product.id
+            ),
+            toastMessage: "Product removed from wishlist",
           }
         : state;
     default:
-      return state;
+      return { ...state, toastMessage: null };
   }
 };
 
@@ -44,6 +49,14 @@ const WishlistProvider = ({ children }) => {
     wishlistReducer,
     defaultState
   );
+
+  const { addToast } = useToast();
+
+  useEffect(() => {
+    wishlistState.toastMessage && addToast(wishlistState.toastMessage);
+
+    return () => wishlistDispatch({});
+  }, [wishlistState.toastMessage]);
 
   return (
     <WishlistContext.Provider value={{ wishlistState, wishlistDispatch }}>

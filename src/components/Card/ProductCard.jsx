@@ -101,7 +101,7 @@ function ProductCard(props) {
             />
           ) : inCart ? (
             <CardButton
-              variant="button-primary product-card-button"
+              variant="button-primary card-button"
               link="../Cart"
               info={
                 <>
@@ -111,7 +111,7 @@ function ProductCard(props) {
             />
           ) : (
             <CardButton
-              variant={`button-outline-secondary product-card-button add-to-cart ${
+              variant={`button-outline-secondary card-button add-to-cart ${
                 inCart ? "no-show" : ""
               }`}
               onClick={() => {

@@ -15,4 +15,5 @@
   left: 50%;
   transform: translateX(-50%);
   max-width: 95%;
+  border: 2px solid;
 }

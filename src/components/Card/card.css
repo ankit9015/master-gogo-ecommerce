@@ -1,8 +1,13 @@
 html {
   --off-white: rgb(250, 250, 250);
 }
-.product-card-button {
+.card-button {
   width: 100%;
+}
+
+.card-vertical,
+.card-horizontal {
+  margin: 0;
 }
 
 .rating-star {
@@ -18,6 +23,10 @@ html {
 
 .card-vertical .card-img {
   height: 40%;
+}
+
+.card-horizontal .card-img {
+  width: 30%;
 }
 
 .card-title {
@@ -40,20 +49,11 @@ html {
   display: block;
 }
 
-.cart-card-list {
-  width: 70rem;
-  height: 30rem;
-}
-
 .cart-card > .card-body {
   width: 60%;
   padding: 0;
   justify-content: start;
-}
-
-.cart-card {
-  width: 70rem;
-  height: 35rem;
+  gap: 1rem;
 }
 
 .counter-button {
@@ -78,6 +78,10 @@ html {
 .item-counter {
   display: flex;
   align-items: center;
+}
+
+.item-counter > .text-md {
+  line-height: normal;
 }
 
 .cart-bill {
