@@ -1,0 +1,20 @@
+.toast {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  width: 25rem;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 3px;
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+
+.toastContainer {
+  position: "absolute";
+  top: "10rem";
+  right: "0rem";
+  z-index: "99";
+}

@@ -115,7 +115,7 @@ function ProductCard(props) {
                 inCart ? "no-show" : ""
               }`}
               onClick={() => {
-                cartDispatch({
+                const temp = cartDispatch({
                   type: "ADD-ITEM",
                   payload: {
                     product: props.product,

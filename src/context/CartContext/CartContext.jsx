@@ -1,4 +1,5 @@
 import { React, createContext, useContext, useEffect, useReducer } from "react";
+import { useToast } from "../ToastContext/ToastContext";
 
 const CartContext = createContext();
 
@@ -7,6 +8,7 @@ const defaultCartState = {
   priceTotal: 0,
   discountedPriceTotal: 0,
   cartItems: [],
+  toastMessage: null,
 };
 
 const findCartItem = (state, product) => {
@@ -30,6 +32,7 @@ const cartReducer = (state, action) => {
             cartItems: state.cartItems.map((item) =>
               item.id === product.id ? { ...item, count: item.count + 1 } : item
             ),
+            toastMessage: "Product added to cart",
           }
         : {
             ...state,
@@ -38,6 +41,7 @@ const cartReducer = (state, action) => {
             discountedPriceTotal:
               state.discountedPriceTotal + Number(product.discountedPrice),
             cartItems: [...state.cartItems, { ...product, count: 1 }],
+            toastMessage: "Product added to cart",
           };
 
     case "DECREMENT":
@@ -56,6 +60,7 @@ const cartReducer = (state, action) => {
                   ? { ...item, count: item.count > 1 ? item.count - 1 : 0 }
                   : item
               ),
+              toastMessage: "Product removed from cart",
             }
           : {
               ...state,
@@ -69,6 +74,7 @@ const cartReducer = (state, action) => {
               cartItems: state.cartItems.filter(
                 (item) => item.id !== product.id
               ),
+              toastMessage: "Product removed from cart",
             }
         : state;
     case "REMOVE-ITEM":
@@ -86,6 +92,7 @@ const cartReducer = (state, action) => {
         cartItems: state.cartItems.filter(
           (item) => item.id !== itemToRemove.id
         ),
+        toastMessage: "Product removed from cart",
       };
     default:
       return state;
@@ -95,6 +102,11 @@ const cartReducer = (state, action) => {
 const CartProvider = ({ children }) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, defaultCartState);
 
+  const { addToast } = useToast();
+
+  useEffect(() => {
+    cartState.toastMessage && addToast(cartState.toastMessage);
+  }, [cartState.toastMessage]);
   return (
     <CartContext.Provider value={{ cartState, cartDispatch }}>
       {children}

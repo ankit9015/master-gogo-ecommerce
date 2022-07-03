@@ -23,7 +23,7 @@ function Cart() {
     <div>
       <Header />
       {cartState.itemTotal === 0 ? (
-        <div className="flex-row flex-center P-l">
+        <div className="flex-row flex-center fluid-img p-l">
           <img src="empty-cart.png" alt="empty-cart" />
         </div>
       ) : (
