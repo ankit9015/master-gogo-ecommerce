@@ -3,12 +3,12 @@ import Card from "../../components/Card/Card";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../Router/router";
-import { useProductContext } from "../../context/ProductContext/ProductContext";
 import Header from "../../components/Header/Header";
 import axios from "axios";
+import { useProduct } from "../../context";
 
 const Home = () => {
-  const { productDispatch } = useProductContext();
+  const { productDispatch } = useProduct();
 
   useEffect(() => {
     document.title = "Home";
@@ -36,7 +36,7 @@ const Home = () => {
         {categories.map((item) => (
           <Link
             key={item._id}
-            to="../Products"
+            to="../explore"
             onClick={() =>
               productDispatch({
                 type: "FILTER-CATEGORIES",
@@ -80,7 +80,7 @@ const Home = () => {
             subtitle={item.categoryName.toUpperCase()}
             description={item.description}
             cardButton={{
-              link: "./Products",
+              link: "../explore",
               variant: "button-primary ",
               info: "Know More",
             }}

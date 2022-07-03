@@ -1,11 +1,11 @@
 import axios from "axios";
-import { React, useEffect } from "react";
-
+import { React, } from "react";
 import ProductCard from "../../components/Card/ProductCard";
-import { useProductContext } from "../../context/ProductContext/ProductContext";
+import { useProduct } from "../../context";
+
 
 export function DisplaySection() {
-  const { products } = useProductContext();
+  const { products } = useProduct();
 
   return (
     <div className="product-display-section">

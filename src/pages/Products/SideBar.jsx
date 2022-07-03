@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { useProductContext } from "../../context/ProductContext/ProductContext";
+import { useProduct } from "../../context";
 
 const ratings = [
   { numStars: "5", ratingName: "5 stars" },
@@ -12,7 +12,7 @@ const ratings = [
 
 export function SideBar() {
   const [categories, setCategories] = useState([]);
-  const { productState, productDispatch } = useProductContext();
+  const { productState, productDispatch } = useProduct();
 
   useEffect(() => {
     (async () => {

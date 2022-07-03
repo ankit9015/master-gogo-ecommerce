@@ -4,9 +4,13 @@ import { CardImage, CardButton } from "./Card";
 import "./card.css";
 import { useCart } from "../../context/CartContext/CartContext";
 import { FaHeart, FaStar } from "react-icons/fa";
+import { useAuth } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard(props) {
   const { wishlistState, wishlistDispatch } = useWishlist();
+  const { authState } = useAuth();
+  const navigate = useNavigate();
 
   const { cartState, cartDispatch } = useCart();
 
@@ -36,15 +40,17 @@ function ProductCard(props) {
       <div
         className="badge-wishlist flex-row button"
         onClick={() =>
-          inWishlist
-            ? wishlistDispatch({
-                type: "REMOVE-ITEM",
-                payload: { product: props.product },
-              })
-            : wishlistDispatch({
-                type: "ADD-ITEM",
-                payload: { product: props.product },
-              })
+          authState?.authToken
+            ? inWishlist
+              ? wishlistDispatch({
+                  type: "REMOVE-ITEM",
+                  payload: { product: props.product },
+                })
+              : wishlistDispatch({
+                  type: "ADD-ITEM",
+                  payload: { product: props.product },
+                })
+            : navigate("../login")
         }
       >
         <i className="fa fa-heart wishlist-icon" aria-hidden="true"></i>

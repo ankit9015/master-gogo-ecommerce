@@ -7,10 +7,12 @@ import { CartProvider } from "./context/CartContext/CartContext";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { WishlistProvider } from "./context/WishlistContext/WishlistContext";
+import { AuthProvider } from "./context";
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider >
       <CartProvider>
         <WishlistProvider>
           <ProductProvider>
@@ -18,6 +20,7 @@ function App() {
           </ProductProvider>
         </WishlistProvider>
       </CartProvider>
+      </AuthProvider>
     </div>
   );
 }

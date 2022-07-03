@@ -114,6 +114,6 @@ const ProductProvider = ({ children }) => {
   );
 };
 
-const useProductContext = () => useContext(ProductContext);
+const useProduct = () => useContext(ProductContext);
 
-export { ProductProvider, useProductContext };
+export { ProductProvider, useProduct };

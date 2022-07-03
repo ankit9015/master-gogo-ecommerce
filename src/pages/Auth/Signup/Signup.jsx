@@ -1,27 +1,26 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
 import "../auth.css";
-import Header from "../../../components/Header/Header";
+import { Header } from "../../../components";
+import { useAuth } from "../../../context";
 
-function Signup({ signupInfo }) {
+function Signup() {
+  const { signupHandler } = useAuth();
   const [signupForm, setSignupForm] = useState({
-    username: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
+    confirmPassword: "",
     acceptTAndC: false,
   });
-
-  useEffect(() => {
-    document.title = "Signup";
-  }, []);
 
   const updateSignupForm = (e) => {
     e.target.name === "acceptTAndC"
       ? setSignupForm({
           ...signupForm,
-          rememberUser: !signupForm.acceptTAndC,
+          acceptTAndC: !signupForm.acceptTAndC,
         })
       : setSignupForm({
           ...signupForm,
@@ -30,6 +29,23 @@ function Signup({ signupInfo }) {
   };
 
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    document.title = "Signup";
+  }, []);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (signupForm.password !== signupForm.confirmPassword) {
+      alert("Password doesn't match");
+      return;
+    }
+    if (!signupForm.acceptTAndC) {
+      alert("Accept Terms and Conditions");
+      return;
+    }
+    signupHandler(signupForm);
+  };
 
   return (
     <div>
@@ -40,7 +56,38 @@ function Signup({ signupInfo }) {
             <h1 className="card-title text-lg m-m font-extrabold text-center">
               Signup
             </h1>
-            <div className="form-container ">
+            <form
+              className="form-container "
+              onSubmit={(e) => submitHandler(e)}
+            >
+              <label className="flex-column">
+                <span className="text-md socketui-label label-required">
+                  Firstname:
+                </span>
+                <input
+                  className="socketui-input text-md"
+                  type="text"
+                  name="firstname"
+                  placeholder="Ankit"
+                  required
+                  value={signupForm.firstname}
+                  onChange={(e) => updateSignupForm(e)}
+                />
+              </label>
+              <label className="flex-column">
+                <span className="text-md socketui-label label-required">
+                  Lastname:
+                </span>
+                <input
+                  className="socketui-input text-md"
+                  type="text"
+                  name="lastname"
+                  placeholder="Joshi"
+                  required
+                  value={signupForm.lastname}
+                  onChange={(e) => updateSignupForm(e)}
+                />
+              </label>
               <label className="flex-column">
                 <span className="text-md socketui-label label-required">
                   Email:
@@ -77,26 +124,41 @@ function Signup({ signupInfo }) {
                   </span>
                 </div>
               </label>
+              <label className="flex-column">
+                <span className="text-md socketui-label label-required">
+                  Confirm Password:
+                </span>
+                <div className="flex-row input-border">
+                  <input
+                    className="socketui-input password-input text-md"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="******"
+                    name="confirmPassword"
+                    required
+                    value={signupForm.confirmPassword}
+                    onChange={(e) => updateSignupForm(e)}
+                  ></input>
+                </div>
+              </label>
 
               <label>
                 <input
                   type="checkbox"
-                  name="rememberUser"
+                  name="acceptTAndC"
                   value={signupForm.acceptTAndC}
                   onChange={(e) => updateSignupForm(e)}
                 />
-                <span className="text-md">
+                <span className="text-md label-required">
                   I accept all the Terms and Conditions
                 </span>
               </label>
 
-              <Link
-                to="../PageNotFound"
+              <button
+                type="submit"
                 className="button-primary link-btn text-md text-center"
-                onClick={() => signupInfo.setIsSignup(true)}
               >
                 Create new account
-              </Link>
+              </button>
 
               <Link
                 className="text-center link-btn button-outline-secondary"
@@ -104,7 +166,7 @@ function Signup({ signupInfo }) {
               >
                 Already have an account
               </Link>
-            </div>
+            </form>
           </div>
         </div>
       </div>
