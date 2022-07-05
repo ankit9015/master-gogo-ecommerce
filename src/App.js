@@ -7,20 +7,22 @@ import { CartProvider } from "./context/CartContext/CartContext";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { WishlistProvider } from "./context/WishlistContext/WishlistContext";
-import { AuthProvider } from "./context";
+import { AuthProvider, ToastProvider } from "./context";
 
 function App() {
   return (
     <div className="App">
-      <AuthProvider >
-      <CartProvider>
-        <WishlistProvider>
-          <ProductProvider>
-            <Router />
-          </ProductProvider>
-        </WishlistProvider>
-      </CartProvider>
-      </AuthProvider>
+      <ToastProvider>
+        <AuthProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <ProductProvider>
+                <Router />
+              </ProductProvider>
+            </WishlistProvider>
+          </CartProvider>
+        </AuthProvider>
+      </ToastProvider>
     </div>
   );
 }

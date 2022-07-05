@@ -1,25 +1,40 @@
 import axios from "axios";
-import { React, } from "react";
+import { React, useState } from "react";
+import { Modal } from "../../components";
 import ProductCard from "../../components/Card/ProductCard";
 import { useProduct } from "../../context";
-
+import { SideBar } from "./SideBar";
 
 export function DisplaySection() {
   const { products } = useProduct();
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="product-display-section">
-      <h2 className="H2 font-bold line-height-lg">
-        Showing All Products{" "}
-        <span className="text-md m-s">{`(Showing ${products.length} products) `}</span>
-      </h2>
+      <div className="header flex-row">
+        <h2 className="H3 font-bold">
+          Showing All Products{" "}
+          <p className="text-md">{`(Showing ${products.length} products) `}</p>
+        </h2>
+        <button
+          className="filter-button button text-md"
+          onClick={() => setShowModal((prev) => !prev)}
+        >
+          Filter
+          {showModal && (
+            <Modal>
+              <div className="filter-modal">
+                <SideBar />
+              </div>
+            </Modal>
+          )}
+        </button>
+      </div>
 
       <div className="product-display-area">
         {products &&
           products.map((product) => (
-            <div key={product._id}>
-              <ProductCard product={product} />
-            </div>
+            <ProductCard key={product._id} product={product} />
           ))}
       </div>
     </div>

@@ -53,7 +53,9 @@ const Card = (props) => {
         )}
       </div>
       {props.overlayText && (
-        <div className="text-overlay text-center H2">{props.overlayText}</div>
+        <div className="text-overlay text-center text-lg">
+          {props.overlayText}
+        </div>
       )}
     </div>
   );

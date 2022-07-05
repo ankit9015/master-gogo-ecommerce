@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
-
-import { useState } from "react";
+import "./Header.css";
 
 import {
   FaBars,
@@ -26,9 +25,6 @@ const Header = () => {
     <nav className="header navbar-container">
       {/* -- ----------------------- NavBar left start --------------- */}
       <div className="navbar-left flex-row">
-        <div className="hamburger-icon nav-icon-badge">
-          <FaBars />
-        </div>
         <div className="nav-logo">
           <NavLink
             style={getActiveLinkStyle}
@@ -42,18 +38,6 @@ const Header = () => {
             <img src="logo-ecom.png" alt="logo" />
           </NavLink>
         </div>
-        <NavLink
-          style={getActiveLinkStyle}
-          to="../explore"
-          className="m-m"
-          onClick={() =>
-            productDispatch({
-              type: "CLEAR-FILTER",
-            })
-          }
-        >
-          <span>Explore</span>
-        </NavLink>
       </div>
 
       {/* -- ----------------------- NavBar left ends --------------- */}
@@ -86,7 +70,7 @@ const Header = () => {
               <span className="badge nav-icon-badge">
                 <MdLogout />
               </span>
-              <span className="nav-icon-text">Logout</span>
+              <span className="nav-icon-text text-md">Logout</span>
             </NavLink>
           ) : (
             <NavLink
@@ -97,7 +81,7 @@ const Header = () => {
               <span className="badge nav-icon-badge">
                 <FaUser />
               </span>
-              <span className="nav-icon-text">Login</span>
+              <span className="nav-icon-text text-md">Login</span>
             </NavLink>
           )}
           <NavLink
@@ -111,7 +95,7 @@ const Header = () => {
                 <span className="badge-count">{wishlistState.itemTotal}</span>
               )}
             </span>
-            <span className="nav-icon-text">Wishlist</span>
+            <span className="nav-icon-text text-md">Wishlist</span>
           </NavLink>
           <NavLink
             style={getActiveLinkStyle}
@@ -124,7 +108,7 @@ const Header = () => {
                 <span className="badge-count">{cartState.itemTotal}</span>
               )}
             </span>
-            <span className="nav-icon-text">Cart</span>
+            <span className="nav-icon-text text-md">Cart</span>
           </NavLink>
         </div>
       </div>

@@ -5,7 +5,6 @@ import { useAuth } from "../context/AuthContext/AuthContext";
 function PrivateRoute({ children }) {
   const { authState } = useAuth();
   const location = useLocation();
-  console.log(location);
   return (
     <div>
       {authState.isLoggedIn ? (

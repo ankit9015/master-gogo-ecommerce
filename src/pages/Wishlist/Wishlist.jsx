@@ -15,11 +15,11 @@ const Wishlist = () => {
     <div>
       <Header />
       {wishlistState.itemTotal === 0 ? (
-        <div className="flex-row flex-center P-l">
+        <div className="flex-row flex-center fluid-img P-l">
           <img src="empty-wishlist.png" alt="empty-wishlist" />
         </div>
       ) : (
-        <div className="p-l">
+        <div>
           <h1 className="text-center text-xl font-extrabold line-height-lg">
             My Wishlist({wishlistState.itemTotal})
           </h1>
@@ -35,7 +35,6 @@ const Wishlist = () => {
       )}
     </div>
   );
-  //
 };
 
 export default Wishlist;

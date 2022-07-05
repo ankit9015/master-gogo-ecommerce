@@ -14,7 +14,7 @@ const CartCard = (props) => {
     <div className="cart-card card-horizontal m-m">
       <CardImage src={props.product.img} alt={props.product.name} />
       <div className="card-body">
-        <h1 className="card-title">{props.product.name}</h1>
+        <h1 className="card-title text-md">{props.product.name}</h1>
 
         <div className="card-description">
           <div className="text-md">
@@ -22,16 +22,16 @@ const CartCard = (props) => {
             <FaStar className="rating-star fas fa-star" />
           </div>
           <div className="display-block">
-            <span className="price-new text-lg font-extrabold">
+            <span className="price-new text-md font-extrabold">
               {`Price: ₹${props.product.discountedPrice}`}
             </span>{" "}
-            <span className="text-lg font-light price-old font-light text-gray">{`₹${props.product.price}`}</span>
+            <span className="text-md font-light price-old font-light text-gray">{`₹${props.product.price}`}</span>
           </div>
           <div className="text-md">{`${props.product.discount}- off`}</div>
         </div>
 
         <div className="item-counter text-md">
-          <span>Item count: </span>
+          <span className="text-md">Item count: </span>
           <button
             className="small-button button counter-button button-outline-secondary"
             onClick={() => {
@@ -65,7 +65,7 @@ const CartCard = (props) => {
           </button>
         </div>
         <CardButton
-          variant="button-secondary product-card-button place-order"
+          variant="button-secondary card-button place-order"
           onClick={() => {
             cartDispatch({
               type: "REMOVE-ITEM",
@@ -86,7 +86,7 @@ const CartCard = (props) => {
           }
         />
         <CardButton
-          variant="button-outline-secondary product-card-button remove-from-cart"
+          variant="button-outline-secondary card-button remove-from-cart"
           onClick={() => {
             cartDispatch({
               type: "REMOVE-ITEM",

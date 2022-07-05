@@ -4,29 +4,70 @@
   margin: 0 10px 0 2px;
 }
 
-.filter-column.filter-column {
-  width: 5rem;
+.filter-button {
+  display: none;
+  margin-left: auto;
+}
+
+.product-display-section {
+  flex: 1;
+  width: 100vw;
+  padding: 3rem 1rem;
+}
+
+.product-display-section .header {
+  margin-bottom: 2rem;
+}
+
+.header {
+  align-items: center;
+}
+
+.header .H3 {
+  width: fit-content;
+}
+
+.product-display-section .filter-icon {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.product-display-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+
+.price-range-input {
+  accent-color: var(--secondary-color);
+}
+
+.filter-modal {
+  height: 60vh;
+  width: auto;
+  max-width: 90vw;
+}
+
+.filter-modal .filter-column {
+  display: block;
+  overflow-y: scroll;
+  width: fit-content;
+  max-height: 100%;
+  max-width: 100%;
+  min-width: auto;
+  padding: 1rem;
+}
+
+.filter-modal .button {
+  width: 100%;
 }
 
 @media only screen and (max-width: 1024px) {
   .filter-column {
     display: none;
   }
-  .hamburger-icon {
+  .filter-button {
     display: block;
   }
-}
-
-.product-display-section {
-  flex: 1;
-}
-
-.product-display-area {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.price-range-input {
-  accent-color: var(--secondary-color);
 }
