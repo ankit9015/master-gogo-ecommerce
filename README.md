@@ -1,6 +1,6 @@
 <h1 align="center">Master GoGo - Clothing Store</h1>
 <p align="center">Master GoGo is a clothing e-commerce platform for all your trendy fashion needs .
-<p  align="center"><a href="https://master-gogo-ecom.netlify.app/">Live link</a><p>
+<p  align="center"><a href="https://master-gogo-ecommerce.netlify.app/">Live link</a><p>
 <br />
 
 ---
