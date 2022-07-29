@@ -37,7 +37,7 @@ const Home = () => {
         {categories.map((item) => (
           <Link
             key={item._id}
-            to="../explore"
+            to="../products"
             onClick={() =>
               productDispatch({
                 type: "FILTER-CATEGORIES",
@@ -64,7 +64,7 @@ const Home = () => {
         </div>
         <button
           className="button-primary banner-cta-btn text-md"
-          onClick={() => navigate("../explore")}
+          onClick={() => navigate("../products")}
         >
           Shop Now
         </button>
@@ -86,7 +86,7 @@ const Home = () => {
             subtitle={item.categoryName.toUpperCase()}
             description={item.description}
             cardButton={{
-              link: "../explore",
+              link: "../products",
               variant: "button-primary ",
               info: "Know More",
             }}

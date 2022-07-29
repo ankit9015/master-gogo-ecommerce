@@ -1,0 +1,8 @@
+.success-page section {
+  padding-top: 10rem;
+}
+
+.success-page .flex-column {
+  gap: 5rem;
+  text-align: center;
+}
