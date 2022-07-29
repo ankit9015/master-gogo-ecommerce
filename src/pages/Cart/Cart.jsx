@@ -1,17 +1,14 @@
 import { React, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CardButton } from "../../components/Card/Card";
 import CartCard from "../../components/Card/CartCard";
 import Header from "../../components/Header/Header";
-import { useAuth } from "../../context";
 import "./Cart.css";
 import { useCart } from "../../context/CartContext/CartContext";
 
 function Cart() {
-  const { cartState } = useCart();
-  const { authState } = useAuth();
+  const { cartState, cartDispatch } = useCart();
   const navigate = useNavigate();
-  const location = useLocation();
 
   let deliveryCharges = cartState.itemTotal ? 499 : 0;
 
@@ -69,11 +66,8 @@ function Cart() {
                 <CardButton
                   variant="button-primary card-button place-order"
                   onClick={() => {
-                    authState?.authToken
-                      ? alert("Order Placed")
-                      : navigate("../login", {
-                          state: { from: location },
-                        });
+                    cartDispatch({ type: "EMPTY-CART" });
+                    navigate("../success");
                   }}
                   info={
                     <>

@@ -17,7 +17,7 @@ const findCartItem = (state, product) => {
 
 const cartReducer = (state, action) => {
   const { type, payload } = action;
-  const { product } = payload;
+  const product = payload?.product ?? undefined;
 
   switch (type) {
     case "ADD-ITEM":
@@ -94,6 +94,8 @@ const cartReducer = (state, action) => {
         ),
         toastMessage: "Product removed from cart",
       };
+    case "EMPTY-CART":
+      return defaultCartState;
     default:
       return state;
   }

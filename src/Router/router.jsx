@@ -9,12 +9,13 @@ import MockAPI from "../pages/mockman/mockapi";
 import Signup from "../pages/Auth/Signup/Signup";
 import PageNotFound from "../pages/page-not-found/PageNotFound";
 import PrivateRoute from "./PrivateRoute";
+import SuccessPage from "../pages/SuccessPage";
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="explore" element={<Products />} />
+      <Route path="products" element={<Products />} />
       <Route
         path="wishlist"
         element={
@@ -23,9 +24,24 @@ const Router = () => {
           </PrivateRoute>
         }
       />
-      <Route path="cart" element={<Cart />} />
+      <Route
+        path="cart"
+        element={
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        }
+      />
       <Route path="signup" element={<Signup />} />
       <Route path="login" element={<Login />} />
+      <Route
+        path="success"
+        element={
+          <PrivateRoute>
+            <SuccessPage />
+          </PrivateRoute>
+        }
+      />
       <Route path="mockapi" element={<MockAPI />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
