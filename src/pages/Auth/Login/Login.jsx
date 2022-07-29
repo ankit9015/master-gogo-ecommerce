@@ -14,6 +14,11 @@ function Login() {
   });
   const { loginHandler } = useAuth();
 
+  const guestInfo = {
+    email: "ankitjoshi@gmail.com",
+    password: "ankit123",
+  };
+
   useEffect(() => {
     document.title = "Login";
   }, []);
@@ -108,6 +113,12 @@ function Login() {
                 Login
               </button>
 
+              <button
+                className="text-center text-md link-btn button-outline-secondary"
+                onClick={() => loginHandler(guestInfo)}
+              >
+                Login as Guest
+              </button>
               <Link
                 className="text-center link-btn button-outline-secondary"
                 to="../Signup"
