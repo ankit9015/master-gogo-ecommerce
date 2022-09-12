@@ -4,7 +4,13 @@ import "./Toast.css";
 import { useToast } from "../../context/ToastContext/ToastContext";
 import { AiOutlineClose } from "../../utils/icon";
 
-function Toast({ children, id }) {
+const TOAST_TYPE = {
+  SUCCESS: { backgroundColor: "#c8e6c9", color: "#1b5e20" },
+  ERROR: { backgroundColor: "#ffcdd2", color: "#b71c1c" },
+  INFO: { backgroundColor: "#c1def6", color: "#2962ff" },
+};
+
+function Toast({ children, id, type }) {
   const { removeToast } = useToast();
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,7 +23,10 @@ function Toast({ children, id }) {
   }, [id, removeToast]);
 
   return (
-    <div className="toast text-md flex-row">
+    <div
+      className="toast text-md flex-row"
+      style={TOAST_TYPE[type.toUpperCase()]}
+    >
       {children}{" "}
       <AiOutlineClose onClick={() => removeToast(id)} fontSize="large" />
     </div>

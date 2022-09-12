@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { React, useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import "../auth.css";
@@ -68,6 +68,10 @@ function Login() {
                   required
                   value={loginForm.email}
                   onChange={(e) => updateLoginForm(e)}
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity("Email cannot be empty")
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                 />
               </label>
               <label className="flex-column">
@@ -83,6 +87,10 @@ function Login() {
                     required
                     value={loginForm.password}
                     onChange={(e) => updateLoginForm(e)}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Password cannot be empty")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
                   ></input>
                   <span
                     className="text-blue password-show"

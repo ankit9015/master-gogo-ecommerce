@@ -14,7 +14,7 @@ function ToastContainer({ toasts }) {
   return createPortal(
     <div style={style} className="toast-container">
       {toasts.map((item) => (
-        <Toast key={item.id} id={item?.id}>
+        <Toast key={item.id} id={item?.id} type={item?.type}>
           {item?.content}
         </Toast>
       ))}

@@ -1,15 +1,18 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home/Homepage";
-import Products from "../pages/Products/Products";
-import Wishlist from "../pages/Wishlist/Wishlist";
-import Cart from "../pages/Cart/Cart";
-import Login from "../pages/Auth/Login/Login";
-import MockAPI from "../pages/mockman/mockapi";
-import Signup from "../pages/Auth/Signup/Signup";
-import PageNotFound from "../pages/page-not-found/PageNotFound";
+import {
+  Home,
+  Products,
+  Wishlist,
+  Cart,
+  Login,
+  MockAPI,
+  Signup,
+  PageNotFound,
+  Address,
+  SuccessPage,
+} from "../pages";
 import PrivateRoute from "./PrivateRoute";
-import SuccessPage from "../pages/SuccessPage";
 
 const Router = () => {
   return (
@@ -39,6 +42,14 @@ const Router = () => {
         element={
           <PrivateRoute>
             <SuccessPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="address"
+        element={
+          <PrivateRoute>
+            <Address />
           </PrivateRoute>
         }
       />

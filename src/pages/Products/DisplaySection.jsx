@@ -31,7 +31,7 @@ export function DisplaySection() {
         </button>
       </div>
 
-      <div className="product-display-area">
+      <div className="products-display-grid">
         {products &&
           products.map((product) => (
             <ProductCard key={product._id} product={product} />

@@ -7,8 +7,9 @@ function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
 
   const addToast = useCallback(
-    (content) => {
-      content && setToasts((toasts) => [...toasts, { id: id++, content }]);
+    ({ content, type }) => {
+      content &&
+        setToasts((toasts) => [...toasts, { id: id++, content, type }]);
     },
     [setToasts]
   );

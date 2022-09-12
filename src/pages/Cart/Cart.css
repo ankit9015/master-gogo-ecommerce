@@ -2,23 +2,42 @@
   width: 100vw;
 }
 .cart-wrapper {
-  justify-content: start;
+  justify-content: center;
   padding: 1rem;
   margin: 1rem;
-  gap: 1rem;
+  margin-bottom: 2rem;
+  gap: 2rem;
   max-width: 100%;
 }
 .cart-bill {
   flex-shrink: 0;
   height: fit-content;
-  width: fit-content;
+  width: 30rem;
 }
 
 .cart-card-list {
   flex-shrink: 2;
+  gap: 1.5rem;
 }
 
-@media screen and (max-width: 700px) {
+.cart-address :first-child p {
+  flex-shrink: 0;
+}
+
+.cart-address {
+  padding: 2rem;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.change-address.button {
+  margin-left: auto;
+  margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 750px) {
   .cart-wrapper {
     flex-wrap: wrap;
   }

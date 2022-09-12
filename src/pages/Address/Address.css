@@ -1,0 +1,49 @@
+.address {
+  padding: 2rem;
+}
+
+.address :is(h1, h2) {
+  margin: 1rem 0;
+}
+.address-form label {
+  margin-top: 1rem;
+}
+
+.address-form select {
+  padding: 5px 0;
+}
+
+.address-form .button {
+  margin: 1rem 0;
+}
+
+.phone-code {
+  border: 1px solid;
+  padding: 2.5px 5px 0;
+}
+.address-form :is(textarea, input, select) {
+  border-radius: 2px;
+  border: 1px solid var(--black);
+  width: 100%;
+}
+
+.address-list {
+  flex-wrap: wrap;
+  gap: 5rem;
+}
+.address-wrapper {
+  width: 25rem;
+  overflow-wrap: break-word;
+  margin-top: 1rem;
+}
+
+.address-wrapper .button {
+  margin-top: 0.5rem;
+  line-height: normal;
+}
+
+@media screen and (min-width: 600px) {
+  .address-form {
+    max-width: 500px;
+  }
+}

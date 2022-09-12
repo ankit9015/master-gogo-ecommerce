@@ -7,6 +7,7 @@ const defaultState = {
   itemTotal: 0,
   wishlist: [],
   toastMessage: null,
+  toastType: null,
 };
 
 const findItem = (state, product) => {
@@ -25,6 +26,7 @@ const wishlistReducer = (state, action) => {
             itemTotal: state.itemTotal + 1,
             wishlist: [...state.wishlist, { ...payload.product }],
             toastMessage: "Product added to wishlist",
+            toastType: "SUCCESS",
           };
 
     case "REMOVE-ITEM":
@@ -37,10 +39,11 @@ const wishlistReducer = (state, action) => {
               (item) => item.id !== payload.product.id
             ),
             toastMessage: "Product removed from wishlist",
+            toastType: "SUCCESS",
           }
         : state;
     default:
-      return { ...state, toastMessage: null };
+      return { ...state, toastMessage: null, toastType: null };
   }
 };
 
@@ -53,9 +56,11 @@ const WishlistProvider = ({ children }) => {
   const { addToast } = useToast();
 
   useEffect(() => {
-    wishlistState.toastMessage && addToast(wishlistState.toastMessage);
-
-    return () => wishlistDispatch({});
+    wishlistState.toastMessage &&
+      addToast({
+        content: wishlistState.toastMessage,
+        type: wishlistState.toastType,
+      });
   }, [wishlistState.toastMessage]);
 
   return (
