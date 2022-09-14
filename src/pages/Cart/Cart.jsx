@@ -19,7 +19,11 @@ function Cart() {
 
   let deliveryCharges = cartState.itemTotal ? 499 : 0;
 
-  const redirect = () => {
+  const redirect = (res) => {
+    if (res._silent === false) {
+      addToast({ content: "Payment Failed", type: "ERROR" });
+      return;
+    }
     cartDispatch({ type: "EMPTY-CART" });
     addToast({
       content: "Transaction successful",
@@ -111,7 +115,7 @@ function Cart() {
                     if (!cartState.address) {
                       addToast({
                         content: "Add delivery address to place order",
-                        type: "INFO",
+                        type: "ERROR",
                       });
                       return;
                     }

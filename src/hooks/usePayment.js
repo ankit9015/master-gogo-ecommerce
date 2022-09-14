@@ -35,9 +35,11 @@ function usePayment(price, user, handler) {
       currency: "INR",
       name: "Master-GoGo Clothing Store",
       description: "Place your order now",
-      image:
-        "https://w7.pngwing.com/pngs/426/341/png-transparent-shopping-cart-e-commerce-online-shopping-logo-shopping-cart-blue-service-logo.png",
-      handler,
+      image: "/android-chrome-512x512.png",
+      handler: (res) => {
+        console.log(res);
+        handler(res);
+      },
       prefill: {
         name: `${user.firstName} ${user.lastName}`,
         email: user.email,
@@ -50,6 +52,10 @@ function usePayment(price, user, handler) {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+    paymentObject.on("payment.failed", (response) => {
+      console.log(response);
+      addToast({ content: "Payment Failed", type: "ERROR" });
+    });
   }
 
   return showRazorPay;
