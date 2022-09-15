@@ -23,7 +23,7 @@ const Wishlist = () => {
           <h1 className="text-center text-xl font-extrabold line-height-lg">
             My Wishlist({wishlistState.itemTotal})
           </h1>
-          <div className="product-card-container">
+          <div className="products-display-grid ">
             {wishlist &&
               wishlist.map((product) => (
                 <div key={product._id}>

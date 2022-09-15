@@ -79,7 +79,7 @@ function ProductCard(props) {
         <div className="flex-row flex-center">
           {props.page === "wishlistPage" ? (
             <CardButton
-              variant="button-primary product-card-button"
+              variant="button-primary card-button"
               link="../Cart"
               onClick={() => {
                 cartDispatch({

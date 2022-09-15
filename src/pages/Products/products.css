@@ -6,6 +6,7 @@
 
 .filter-button {
   display: none;
+  margin: 0;
   margin-left: auto;
 }
 
@@ -16,8 +17,9 @@
   padding: 3rem;
 }
 
-.product-display-section .header {
+.products-display-section .header {
   margin-bottom: 2rem;
+  z-index: 0;
 }
 
 .header {
@@ -31,12 +33,6 @@
 .product-display-section .filter-icon {
   margin-left: auto;
   margin-right: 1rem;
-}
-
-.product-display-area {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
 }
 
 .price-range-input {
@@ -75,8 +71,5 @@
 @media screen and (max-width: 400px) {
   .product-display-section {
     padding: 2rem;
-  }
-  .product-display-area {
-    gap: 1rem;
   }
 }

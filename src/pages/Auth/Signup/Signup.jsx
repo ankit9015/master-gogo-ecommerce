@@ -16,6 +16,15 @@ function Signup() {
     acceptTAndC: false,
   });
 
+  const dummyData = {
+    firstname: "Jane",
+    lastname: "Doe",
+    email: "janeDoe@gmail.com",
+    password: "jane123",
+    confirmPassword: "jane123",
+    acceptTAndC: true,
+  };
+
   const updateSignupForm = (e) => {
     e.target.name === "acceptTAndC"
       ? setSignupForm({
@@ -100,6 +109,10 @@ function Signup() {
                   required
                   value={signupForm.email}
                   onChange={(e) => updateSignupForm(e)}
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity("Email cannot be empty")
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                 />
               </label>
               <label className="flex-column">
@@ -115,6 +128,10 @@ function Signup() {
                     required
                     value={signupForm.password}
                     onChange={(e) => updateSignupForm(e)}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Password cannot be empty")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
                   ></input>
                   <span
                     className="text-blue password-show"
@@ -128,6 +145,9 @@ function Signup() {
                 <span className="text-md socketui-label label-required">
                   Confirm Password:
                 </span>
+                {signupForm.password !== signupForm.confirmPassword && (
+                  <p className="text-md text-red">Passwords are not matching</p>
+                )}
                 <div className="flex-row input-border">
                   <input
                     className="socketui-input password-input text-md"
@@ -137,6 +157,10 @@ function Signup() {
                     required
                     value={signupForm.confirmPassword}
                     onChange={(e) => updateSignupForm(e)}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Enter matching password")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
                   ></input>
                 </div>
               </label>
@@ -145,8 +169,14 @@ function Signup() {
                 <input
                   type="checkbox"
                   name="acceptTAndC"
-                  value={signupForm.acceptTAndC}
+                  checked={signupForm.acceptTAndC}
                   onChange={(e) => updateSignupForm(e)}
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Accept Terms and Conditions to Signup"
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                 />
                 <span className="text-md label-required">
                   I accept all the Terms and Conditions
@@ -159,7 +189,16 @@ function Signup() {
               >
                 Create new account
               </button>
-
+              <button
+                className="button-primary link-btn text-md text-center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setSignupForm(dummyData);
+                }}
+              >
+                Fill dummy data
+              </button>
               <Link
                 className="text-center link-btn button-outline-secondary"
                 to="../Login"

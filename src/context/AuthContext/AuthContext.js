@@ -1,53 +1,71 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "..";
 import { loginHandlerService, signupHandlerService } from "../../services";
 
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
-  const authToken = JSON.parse(localStorage.getItem("AUTH-TOKEN"));
-
   const navigate = useNavigate();
   const location = useLocation();
+  const { addToast } = useToast();
 
   const [authState, setAuthState] = useState({
-    isLoggedIn: authToken ? true : false,
-    authToken: authToken,
+    authToken: JSON.parse(localStorage.getItem("AUTH-TOKEN")) ?? null,
+    user: JSON.parse(localStorage.getItem("AUTH-USER")) ?? null,
   });
 
-  const loginHandler = async ({ email, password }) => {
-    const { data, status } = await loginHandlerService({ email, password });
-    if (status === 200) {
+  const _loginHandler = async ({ email, password }) => {
+    const res = await loginHandlerService({ email, password });
+    console.log(res);
+    if (res && res.status === 200) {
+      const { data } = res;
       localStorage.setItem("AUTH-TOKEN", JSON.stringify(data.encodedToken));
+      localStorage.setItem("AUTH-USER", JSON.stringify(data.foundUser));
       setAuthState({
-        isLoggedIn: true,
-        authToken: JSON.stringify(data.encodedToken),
+        authToken: data.encodedToken,
+        user: data.foundUser,
       });
-      location.state ? navigate(location.state.from.pathname) : navigate("/");
+      location.state
+        ? navigate(location.state.from.pathname)
+        : navigate("/products");
+    } else {
+      addToast({ content: "Incorrect Email or password", type: "ERROR" });
     }
   };
 
+  const loginHandler = useCallback(_loginHandler, []);
+
   const signupHandler = async ({ firstname, lastname, email, password }) => {
-    const { data, status } = await signupHandlerService({
+    const res = await signupHandlerService({
       firstname,
       lastname,
       email,
       password,
     });
-    if (status === 201) {
-      localStorage.setItem("AUTH-TOKEN", JSON.stringify(data.encodedToken));
+    if (res?.status === 201) {
+      localStorage.setItem(
+        "AUTH-TOKEN",
+        JSON.stringify(res?.data.encodedToken)
+      );
+      localStorage.setItem("AUTH-USER", JSON.stringify(res?.data.createdUser));
       setAuthState({
-        isLoggedIn: true,
-        authToken: JSON.stringify(data.encodedToken),
+        authToken: res.data.encodedToken,
+        user: res.data.createdUser,
       });
       location.state ? navigate(location.state.from.pathname) : navigate("/");
+    } else {
+      addToast({
+        content: "Signup Failed, email already exist",
+        type: "ERROR",
+      });
     }
   };
 
   const logoutHandler = () => {
     localStorage.removeItem("AUTH-TOKEN");
     localStorage.removeItem("TRASH");
-    setAuthState({ isLoggedIn: false, authToken: undefined });
+    setAuthState({ authToken: null, user: null });
     navigate("/");
   };
 

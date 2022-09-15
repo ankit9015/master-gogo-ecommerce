@@ -42,20 +42,6 @@ const Header = () => {
 
       {/* -- ----------------------- NavBar left ends --------------- */}
 
-      {/* ----------------- Searchbox start -------------------- */}
-
-      <div className="search-box flex-row">
-        <FaSearch />
-        <input
-          className="search-input"
-          type="search"
-          name="product-search"
-          id="product-search"
-          placeholder="Search"
-        ></input>
-      </div>
-
-      {/* ----------------- Searchbox end ---------------------- */}
       {/* ---------------------- Navbar right start --------------------  */}
 
       <div className="right-navbar">

@@ -13,7 +13,22 @@ export const users = [
     lastName: "Joshi",
     email: "ankitjoshi@gmail.com",
     password: "ankit123",
+    phone: "9010203040",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    address: [
+      {
+        addressId: uuid(),
+        name: "Ankit Joshi",
+        house: "H.no. 201, Pushp Vihar",
+        area: "Saket",
+        city: "New Delhi",
+        state: { code: "DL", name: "Delhi" },
+        country: { code: "IN", name: "India" },
+        phoneCode: "91",
+        phone: "9010203040",
+        pincode: "201003",
+      },
+    ],
   },
 ];

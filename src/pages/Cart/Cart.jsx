@@ -5,12 +5,38 @@ import CartCard from "../../components/Card/CartCard";
 import Header from "../../components/Header/Header";
 import "./Cart.css";
 import { useCart } from "../../context/CartContext/CartContext";
+import { useAuth, useToast } from "../../context";
+import AddressCard from "../Address/AddressCard";
+import usePayment from "../../hooks/usePayment";
 
 function Cart() {
   const { cartState, cartDispatch } = useCart();
+  const { addToast } = useToast();
+  const {
+    authState: { user },
+  } = useAuth();
   const navigate = useNavigate();
 
   let deliveryCharges = cartState.itemTotal ? 499 : 0;
+
+  const redirect = (res) => {
+    if (res._silent === false) {
+      addToast({ content: "Payment Failed", type: "ERROR" });
+      return;
+    }
+    cartDispatch({ type: "EMPTY-CART" });
+    addToast({
+      content: "Transaction successful",
+      type: "SUCCESS",
+    });
+    navigate("/success");
+  };
+
+  const showRazorPay = usePayment(
+    Number(cartState.discountedPriceTotal) + Number(deliveryCharges),
+    user,
+    redirect
+  );
 
   useEffect(() => {
     document.title = "Cart";
@@ -28,6 +54,24 @@ function Cart() {
           <h1 className="text-center text-xl font-extrabold line-height-lg">
             My Cart({cartState.itemTotal})
           </h1>
+          <section className="cart-address">
+            <div className="flex-row flex-wrap">
+              <p className="text-lg">Delivery Address: </p>
+              <button
+                className="change-address button button-outline-secondary text-md"
+                onClick={() => navigate("/address")}
+              >
+                Change Address
+              </button>
+            </div>
+            {cartState.address ? (
+              <AddressCard address={cartState.address} />
+            ) : (
+              <p className="text-md text-red">
+                Add your delivery address to place order
+              </p>
+            )}
+          </section>
           <div className="cart-wrapper flex-row">
             <div className=" flex-column cart-card-list ">
               {cartState.cartItems.map((product) => (
@@ -47,11 +91,13 @@ function Cart() {
                 </div>
                 <div className="flex-row main-space-between">
                   <h2>Discount</h2>
-                  <span className="text-lg">{`₹${cartState.discountedPriceTotal}`}</span>
+                  <span className="text-lg">{`-₹${
+                    cartState.priceTotal - cartState.discountedPriceTotal
+                  }`}</span>
                 </div>
                 <div className="flex-row main-space-between">
                   <h2>Delivery Charges</h2>
-                  <span className="text-lg">{`₹${deliveryCharges}`}</span>
+                  <span className="text-lg">{`+₹${deliveryCharges}`}</span>
                 </div>
                 <hr className="gray-line" />
                 <div className="flex-row main-space-between">
@@ -66,8 +112,14 @@ function Cart() {
                 <CardButton
                   variant="button-primary card-button place-order"
                   onClick={() => {
-                    cartDispatch({ type: "EMPTY-CART" });
-                    navigate("../success");
+                    if (!cartState.address) {
+                      addToast({
+                        content: "Add delivery address to place order",
+                        type: "ERROR",
+                      });
+                      return;
+                    }
+                    showRazorPay();
                   }}
                   info={
                     <>

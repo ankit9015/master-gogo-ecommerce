@@ -7,7 +7,7 @@ function PrivateRoute({ children }) {
   const location = useLocation();
   return (
     <div>
-      {authState.isLoggedIn ? (
+      {authState.authToken ? (
         children
       ) : (
         <Navigate to="/login" state={{ from: location }} replace />

@@ -1,10 +1,16 @@
 import { Server, Model, RestSerializer } from "miragejs";
 import {
+  addAddressHandler,
+  getAddressHandler,
+  removeAddressHandler,
+} from "./backend/controllers/AddressController";
+import {
   loginHandler,
   signupHandler,
 } from "./backend/controllers/AuthController";
 import {
   addItemToCartHandler,
+  clearCartHandler,
   getCartItemsHandler,
   removeItemFromCartHandler,
   updateCartItemHandler,
@@ -38,6 +44,7 @@ export function makeServer({ environment = "development" } = {}) {
       user: Model,
       cart: Model,
       wishlist: Model,
+      address: Model,
     },
 
     // Runs on the start of the server
@@ -48,9 +55,9 @@ export function makeServer({ environment = "development" } = {}) {
         server.create("product", { ...item });
       });
 
-      users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
-      );
+      users.forEach((item) => {
+        return server.create("user", { ...item, cart: [], wishlist: [] });
+      });
 
       categories.forEach((item) => server.create("category", { ...item }));
     },
@@ -77,6 +84,8 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/cart/:productId",
         removeItemFromCartHandler.bind(this)
       );
+      // adding clear cart controller
+      this.delete("/user/cart/all", clearCartHandler.bind(this));
 
       // wishlist routes (private)
       this.get("/user/wishlist", getWishlistItemsHandler.bind(this));
@@ -85,6 +94,11 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/wishlist/:productId",
         removeItemFromWishlistHandler.bind(this)
       );
+
+      //address routes (private)
+      this.get("/user/address", getAddressHandler.bind(this));
+      this.post("/user/address", addAddressHandler.bind(this));
+      this.delete("/user/address/:addressId", removeAddressHandler.bind(this));
     },
   });
 }
