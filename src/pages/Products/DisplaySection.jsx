@@ -11,7 +11,7 @@ export function DisplaySection() {
 
   return (
     <div className="product-display-section">
-      <div className="header flex-row">
+      <div className="product-header flex-row">
         <h2 className="H3 font-bold">
           Showing All Products{" "}
           <p className="text-md">{`(Showing ${products.length} products) `}</p>
